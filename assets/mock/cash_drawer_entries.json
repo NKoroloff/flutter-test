@@ -1,0 +1,26 @@
+[
+  {
+    "dateTime": "2025-06-30T08:21:00",
+    "amount": "-$2.00",
+    "balance": "$308.00",
+    "note": "Shortage on drawer"
+  },
+  {
+    "dateTime": "2025-06-30T01:32:00",
+    "amount": "Open",
+    "balance": "$300.00",
+    "note": "Drawer opened"
+  },
+  {
+    "dateTime": "2025-06-30T01:31:00",
+    "amount": "-$12.00",
+    "balance": "$300.00",
+    "note": "Refund"
+  },
+  {
+    "dateTime": "2025-06-29T22:50:00",
+    "amount": "+$20.00",
+    "balance": "$312.00",
+    "note": "Cash in"
+  }
+]
