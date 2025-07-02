@@ -24,4 +24,14 @@ You can use any UI you like, just copy the structure and basic logic like in the
 - Mock data is located in `assets/mock/cash_drawer_entries.json`
 - You can load and parse it yourself to build the model
 
+
+### 🚀 How to run
+
+1. Make sure Flutter is installed: https://docs.flutter.dev/get-started/install
+2. Run this in terminal:
+```bash
+flutter pub get
+flutter run
+```
+
 That’s all. Thanks :)
