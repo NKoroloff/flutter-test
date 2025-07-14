@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:purplepass_test_task/modules/translations/app_translation.dart';
 import 'package:purplepass_test_task/routes/app_pages.dart';
 
 void main() {
@@ -11,6 +12,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(key: UniqueKey(), debugShowCheckedModeBanner: false, title: 'MVC_test', initialRoute: AppPages.initial, getPages: AppPages.routes);
+    return GetMaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'MVC_test',
+      initialRoute: AppPages.initial,
+      getPages: AppPages.routes,
+      translations: AppTranslation(),
+      locale: const Locale('en', 'US'),
+      fallbackLocale: const Locale('en', 'US'),
+    );
   }
 }
