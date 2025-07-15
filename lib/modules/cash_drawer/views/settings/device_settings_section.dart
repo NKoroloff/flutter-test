@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:purplepass_test_task/modules/cash_drawer/views/settings/widgets/settings_select_option.dart';
 import 'package:purplepass_test_task/modules/cash_drawer/views/settings/widgets/settings_container_wrapper.dart';
 import 'package:purplepass_test_task/modules/cash_drawer/views/settings/widgets/settings_labeled_switch.dart';
 import 'package:purplepass_test_task/modules/cash_drawer/views/settings/widgets/settings_section_title.dart';
 
-class WirelessPrintingOptionsSection extends StatelessWidget {
-  const WirelessPrintingOptionsSection({super.key});
+class DeviceSettingsSection extends StatelessWidget {
+  const DeviceSettingsSection({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +15,7 @@ class WirelessPrintingOptionsSection extends StatelessWidget {
         const Row(
           children: [
             SizedBox(width: 20),
-            SettingsSectionTitle(title: 'wirelessPrintOptions'),
+            SettingsSectionTitle(title: 'deviceSettings'),
           ],
         ),
         const SizedBox(height: 10),
@@ -27,30 +26,27 @@ class WirelessPrintingOptionsSection extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  Text('Epson Bluetooth Printer'.tr),
+                  const Text('Authorize.net EMV'),
                   const Spacer(flex: 1),
                   InkWell(onTap: () {}, child: const Icon(Icons.arrow_forward_ios)),
                   const SizedBox(width: 20),
                 ],
               ),
               const Divider(height: 1, color: Color.fromARGB(255, 202, 202, 202)),
-              const SettingsLabeledSwitch(label: 'enablePrintFunct'),
+              const SettingsLabeledSwitch(label: 'checkUnknownSerials'),
               const Divider(height: 1, color: Color.fromARGB(255, 202, 202, 202)),
-              const SettingsLabeledSwitch(label: 'enablePrintedReceipts'),
+              const SettingsLabeledSwitch(label: 'enableInfinitePeripheralGear'),
               const Divider(height: 1, color: Color.fromARGB(255, 202, 202, 202)),
-              SettingsSelectOption(isSelected: false, onTap: () {}, label: 'alwaysPrint'),
-              const Divider(height: 1, color: Color.fromARGB(255, 202, 202, 202)),
-              SettingsSelectOption(
-                isSelected: true,
-                onTap: () {
-                  print('helo');
-                },
-                label: 'askAfterEachSale',
-              ),
-
-              const Divider(height: 1, color: Color.fromARGB(255, 202, 202, 202)),
-              const SettingsLabeledSwitch(label: 'signedCCReceipt'),
+              const SettingsLabeledSwitch(label: 'continuousScan'),
             ],
+          ),
+        ),
+        const SizedBox(height: 10),
+        Padding(
+          padding: const EdgeInsets.only(left: 20.0),
+          child: Text(
+            'youCanUseLineaPro'.tr,
+            style: const TextStyle(color: Color.fromARGB(255, 131, 129, 129), fontSize: 14),
           ),
         ),
       ],

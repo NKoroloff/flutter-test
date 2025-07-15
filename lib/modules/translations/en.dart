@@ -11,4 +11,48 @@ Map<String, String> en = {
   'alwaysPrint': 'Always print',
   'uniqueDeviceName':
       'To ensure proper functionality and tracking, please make sure you assign a unique name for every device',
+
+  'admsOptions': 'Admission Options',
+  'enablePrintFeature': 'Enable Printing Feature',
+  'enableAdmittingFeature': 'Enable Admitting Feature',
+  'enableTicketIssuing': 'Enable Ticket Issuing',
+  'enableScanIn': 'Enable Scan-in Feature',
+
+  'deviceSettings': 'Device Settings',
+  'checkUnknownSerials': 'Check Unknown Serials',
+  'enableInfinitePeripheralGear': 'Enable Infinite Peripheral Gear',
+  'continuousScan': 'Continuous Scan',
+  'youCanUseLineaPro': 'You can use LineaPro as powersource for your iPhone/iPad',
+
+  'sellSettigs': 'Sell Settigs',
+  'enableCoupCodes': 'Enable Coupon Codes',
+  'enableCheckoutQuestions': 'Enable Checkout Questions',
+  'collectSignatureOnCc': 'Collect Signature on CC',
+  'emailCcReceipt': 'Email CC Receipt',
+  'emailCashReceipt': 'Email Cash Receipt',
+  'hideComp': 'Hide COMP',
+  'hideRef': 'Hide Refund',
+  'enableDiscounts': 'Enable Discounts',
+  'default': 'Default',
+  'enableTips': 'Enable Tips (Credit Only)',
+
+  'lockMode': 'Lock Mode',
+  'enableSearch': 'Enable Search',
+  'validTicketsSound': 'Valid Ticket Sound',
+  'invManagement': 'Inventory Management',
+  'enableOverSell': 'Enable Over-Sell Ability',
+
+  'showRemainTickets': 'Show Remaining # of tickets',
+  'always': 'Always',
+  'whenLessThan25': 'When Less Than 25 availiable',
+
+  'compTickets': 'COMP Tickets',
+  'shouldAlways': 'Should always be deducted from inventory',
+  'shouldNever': 'Should never be deducted from inventory',
+  'giveOption': 'Give oprion to choose when processing order',
+  'deductFrom': 'Deduct From inventory',
+  'notDeductFrom': 'Do not deduct From inventory',
+
+  'clearLocData': 'Clear Local Data',
+  'resetToDef': 'Reset to Default',
 };
