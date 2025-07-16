@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:purplepass_test_task/modules/cash_drawer/views/settings/widgets/custom_divider.dart';
 import 'package:purplepass_test_task/modules/cash_drawer/views/settings/widgets/settings_container_wrapper.dart';
 import 'package:purplepass_test_task/modules/cash_drawer/views/settings/widgets/settings_labeled_switch.dart';
 import 'package:purplepass_test_task/modules/cash_drawer/views/settings/widgets/settings_section_title.dart';
@@ -27,17 +28,25 @@ class DeviceSettingsSection extends StatelessWidget {
               Row(
                 children: [
                   const Text('Authorize.net EMV'),
-                  const Spacer(flex: 1),
+                  const Spacer(),
                   InkWell(onTap: () {}, child: const Icon(Icons.arrow_forward_ios)),
                   const SizedBox(width: 20),
                 ],
               ),
-              const Divider(height: 1, color: Color.fromARGB(255, 202, 202, 202)),
-              const SettingsLabeledSwitch(label: 'check_unknown_serials'),
-              const Divider(height: 1, color: Color.fromARGB(255, 202, 202, 202)),
-              const SettingsLabeledSwitch(label: 'enable_infinite_peripheral_gear'),
-              const Divider(height: 1, color: Color.fromARGB(255, 202, 202, 202)),
-              const SettingsLabeledSwitch(label: 'continuous_scan'),
+              const CustomDivider(),
+              SettingsLabeledSwitch(
+                value: true,
+                onChanged: (value) {},
+                label: 'check_unknown_serials',
+              ),
+              const CustomDivider(),
+              SettingsLabeledSwitch(
+                value: true,
+                onChanged: (value) {},
+                label: 'enable_infinite_peripheral_gear',
+              ),
+              const CustomDivider(),
+              SettingsLabeledSwitch(value: true, onChanged: (value) {}, label: 'continuous_scan'),
             ],
           ),
         ),

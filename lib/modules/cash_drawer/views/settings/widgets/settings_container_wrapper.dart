@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 
 class SettingsContainerWrapper extends StatelessWidget {
-  const SettingsContainerWrapper({required this.child, super.key});
+  const SettingsContainerWrapper({
+    required this.child,
+    this.padding = const EdgeInsets.fromLTRB(20, 10, 0, 10),
+    super.key,
+  });
+  final EdgeInsetsGeometry padding;
   final Widget child;
 
   @override
@@ -12,7 +17,7 @@ class SettingsContainerWrapper extends StatelessWidget {
         color: Colors.white,
         border: Border.all(color: Colors.grey),
       ),
-      child: Padding(padding: const EdgeInsets.fromLTRB(20.0, 10, 0, 10), child: child),
+      child: Padding(padding: padding, child: child),
     );
   }
 }

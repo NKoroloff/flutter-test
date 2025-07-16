@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:purplepass_test_task/modules/cash_drawer/views/settings/widgets/custom_divider.dart';
 import 'package:purplepass_test_task/modules/cash_drawer/views/settings/widgets/settings_select_option.dart';
 import 'package:purplepass_test_task/modules/cash_drawer/views/settings/widgets/settings_container_wrapper.dart';
 import 'package:purplepass_test_task/modules/cash_drawer/views/settings/widgets/settings_labeled_switch.dart';
@@ -28,18 +29,26 @@ class WirelessPrintingOptionsSection extends StatelessWidget {
               Row(
                 children: [
                   Text('Epson Bluetooth Printer'.tr),
-                  const Spacer(flex: 1),
+                  const Spacer(),
                   InkWell(onTap: () {}, child: const Icon(Icons.arrow_forward_ios)),
                   const SizedBox(width: 20),
                 ],
               ),
-              const Divider(height: 1, color: Color.fromARGB(255, 202, 202, 202)),
-              const SettingsLabeledSwitch(label: 'enable_print_funct'),
-              const Divider(height: 1, color: Color.fromARGB(255, 202, 202, 202)),
-              const SettingsLabeledSwitch(label: 'enable_printed_receipts'),
-              const Divider(height: 1, color: Color.fromARGB(255, 202, 202, 202)),
+              CustomDivider(),
+              SettingsLabeledSwitch(
+                value: true,
+                onChanged: (value) {},
+                label: 'enable_print_funct',
+              ),
+              CustomDivider(),
+              SettingsLabeledSwitch(
+                value: true,
+                onChanged: (value) {},
+                label: 'enable_printed_receipts',
+              ),
+              CustomDivider(),
               SettingsSelectOption(isSelected: false, onTap: () {}, label: 'always_print'),
-              const Divider(height: 1, color: Color.fromARGB(255, 202, 202, 202)),
+              CustomDivider(),
               SettingsSelectOption(
                 isSelected: true,
                 onTap: () {
@@ -48,8 +57,8 @@ class WirelessPrintingOptionsSection extends StatelessWidget {
                 label: 'ask_after_each_sale',
               ),
 
-              const Divider(height: 1, color: Color.fromARGB(255, 202, 202, 202)),
-              const SettingsLabeledSwitch(label: 'signed_cc_receipt'),
+              CustomDivider(),
+              SettingsLabeledSwitch(value: true, onChanged: (value) {}, label: 'signed_cc_receipt'),
             ],
           ),
         ),

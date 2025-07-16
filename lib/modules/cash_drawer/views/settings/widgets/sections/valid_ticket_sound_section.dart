@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:purplepass_test_task/modules/cash_drawer/views/settings/widgets/custom_divider.dart';
 import 'package:purplepass_test_task/modules/cash_drawer/views/settings/widgets/settings_select_option.dart';
 import 'package:purplepass_test_task/modules/cash_drawer/views/settings/widgets/settings_container_wrapper.dart';
 import 'package:purplepass_test_task/modules/cash_drawer/views/settings/widgets/settings_section_title.dart';
@@ -24,9 +25,9 @@ class ValidTicketSoundSection extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SettingsSelectOption(label: 'Sound 1', isSelected: true, onTap: () {}),
-              const Divider(height: 1, color: Color.fromARGB(255, 202, 202, 202)),
+              CustomDivider(),
               SettingsSelectOption(label: 'Sound 2', isSelected: false, onTap: () {}),
-              const Divider(height: 1, color: Color.fromARGB(255, 202, 202, 202)),
+              CustomDivider(),
               SettingsSelectOption(label: 'Sound 3', isSelected: false, onTap: () {}),
             ],
           ),

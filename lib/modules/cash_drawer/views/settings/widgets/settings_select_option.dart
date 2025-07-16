@@ -23,7 +23,7 @@ class SettingsSelectOption extends StatelessWidget {
           child: Row(
             children: [
               Text(label.tr),
-              const Spacer(flex: 1),
+              const Spacer(),
               if (isSelected) const Icon(Icons.check, color: Colors.blue),
             ],
           ),
