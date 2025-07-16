@@ -1,27 +1,46 @@
-include: package:flutter_lints/flutter.yaml
 
 analyzer:
-  language:
-    strict-casts: true
-    strict-inference: true
-    strict-raw-types: true
+  errors:
+    unused_import: error
+    strict_raw_type: false
+
   exclude:
-    - "**/*.g.dart"
-    - "**/*.freezed.dart"
-    - "**/*.gr.dart"
+    - '**/*.config.dart'
+    - '**/*.freezed.dart'
+    - '**/*.gr.dart'
+    - '**/*.g.dart'
+    - '**/*.i69n.dart'
+    - '**/*.mocks.dart'
+    - './lib/app/localization/app_localization.dart'
 
 linter:
   rules:
+    avoid_types_as_parameter_names: true
     always_put_control_body_on_new_line: true
     always_put_required_named_parameters_first: true
-    prefer_single_quotes: true
-    prefer_const_constructors: true
-    prefer_const_literals_to_create_immutables: true
-    use_key_in_widget_constructors: true
+    avoid_catches_without_on_clauses: false
+    avoid_equals_and_hash_code_on_mutable_classes: true
+    avoid_field_initializers_in_const_classes: true
+    avoid_redundant_argument_values: true
+    avoid_renaming_method_parameters: true
+    avoid_types_on_closure_parameters: false
     avoid_unnecessary_containers: true
-    omit_local_variable_types: false
-    curly_braces_in_flow_control_structures: true
-    sort_constructors_first: true
-    prefer_final_locals: true
-    annotate_overrides: true
+    camel_case_types: true
+    camel_case_extensions: true
+    omit_local_variable_types: true
+    overridden_fields: false
+    non_constant_identifier_names: true
+    prefer_adjacent_string_concatenation: true
+    prefer_const_literals_to_create_immutables: true
+    prefer_constructors_over_static_methods: true
+    prefer_expression_function_bodies: false
+    prefer_single_quotes: true
+    prefer_interpolation_to_compose_strings: true
+    sort_constructors_first: false
+    unnecessary_statements: true
     unnecessary_this: true
+    unnecessary_new: true
+    unnecessary_lambdas: true
+    unnecessary_brace_in_string_interps: true
+    use_key_in_widget_constructors: true
+    sort_pub_dependencies: false
