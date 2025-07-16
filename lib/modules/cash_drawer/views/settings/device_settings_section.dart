@@ -15,7 +15,7 @@ class DeviceSettingsSection extends StatelessWidget {
         const Row(
           children: [
             SizedBox(width: 20),
-            SettingsSectionTitle(title: 'deviceSettings'),
+            SettingsSectionTitle(title: 'device_settings'),
           ],
         ),
         const SizedBox(height: 10),
@@ -33,11 +33,11 @@ class DeviceSettingsSection extends StatelessWidget {
                 ],
               ),
               const Divider(height: 1, color: Color.fromARGB(255, 202, 202, 202)),
-              const SettingsLabeledSwitch(label: 'checkUnknownSerials'),
+              const SettingsLabeledSwitch(label: 'check_unknown_serials'),
               const Divider(height: 1, color: Color.fromARGB(255, 202, 202, 202)),
-              const SettingsLabeledSwitch(label: 'enableInfinitePeripheralGear'),
+              const SettingsLabeledSwitch(label: 'enable_infinite_peripheral_gear'),
               const Divider(height: 1, color: Color.fromARGB(255, 202, 202, 202)),
-              const SettingsLabeledSwitch(label: 'continuousScan'),
+              const SettingsLabeledSwitch(label: 'continuous_scan'),
             ],
           ),
         ),
@@ -45,7 +45,7 @@ class DeviceSettingsSection extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.only(left: 20.0),
           child: Text(
-            'youCanUseLineaPro'.tr,
+            'you_can_use_lineapro'.tr,
             style: const TextStyle(color: Color.fromARGB(255, 131, 129, 129), fontSize: 14),
           ),
         ),

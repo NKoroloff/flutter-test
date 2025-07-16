@@ -46,7 +46,7 @@ class SettingsView extends StatelessWidget {
                   Row(
                     children: [
                       SizedBox(width: 20),
-                      SettingsSectionTitle(title: 'lockMode'),
+                      SettingsSectionTitle(title: 'lock_mode'),
                     ],
                   ),
                   SizedBox(height: 10),
@@ -54,7 +54,7 @@ class SettingsView extends StatelessWidget {
                     child: Column(
                       spacing: 10,
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [SettingsLabeledSwitch(label: 'enableSearch')],
+                      children: [SettingsLabeledSwitch(label: 'enable_search')],
                     ),
                   ),
                 ],
@@ -64,7 +64,7 @@ class SettingsView extends StatelessWidget {
                   Row(
                     children: [
                       SizedBox(width: 20),
-                      SettingsSectionTitle(title: 'invManagement'),
+                      SettingsSectionTitle(title: 'inventory_management'),
                     ],
                   ),
                   SizedBox(height: 10),
@@ -72,15 +72,15 @@ class SettingsView extends StatelessWidget {
                     child: Column(
                       spacing: 10,
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [SettingsLabeledSwitch(label: 'enableOverSell')],
+                      children: [SettingsLabeledSwitch(label: 'enable_over_sell')],
                     ),
                   ),
                 ],
               ),
               const RemainTicketsSection(),
               const CompTicketsSection(),
-              TextButton(onPressed: () {}, child: Text('clearLocData'.tr)),
-              TextButton(onPressed: () {}, child: Text('resetToDef'.tr)),
+              TextButton(onPressed: () {}, child: Text('clear_local_data'.tr)),
+              TextButton(onPressed: () {}, child: Text('reset_to_default'.tr)),
             ],
           ),
         ),

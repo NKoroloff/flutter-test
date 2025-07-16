@@ -14,7 +14,7 @@ class RemainTicketsSection extends StatelessWidget {
         const Row(
           children: [
             SizedBox(width: 20),
-            SettingsSectionTitle(title: 'showRemainTickets'),
+            SettingsSectionTitle(title: 'show_remain_tickets'),
           ],
         ),
         const SizedBox(height: 10),
@@ -23,7 +23,7 @@ class RemainTicketsSection extends StatelessWidget {
             spacing: 10,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SettingsSelectOption(label: 'whenLessThan25', isSelected: true, onTap: () {}),
+              SettingsSelectOption(label: 'when_less_than25', isSelected: true, onTap: () {}),
               const Divider(height: 1, color: Color.fromARGB(255, 202, 202, 202)),
               SettingsSelectOption(label: 'always', isSelected: true, onTap: () {}),
             ],

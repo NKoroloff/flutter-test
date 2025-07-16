@@ -14,7 +14,7 @@ class ValidTicketSoundSection extends StatelessWidget {
         const Row(
           children: [
             SizedBox(width: 20),
-            SettingsSectionTitle(title: 'validTicketsSound'),
+            SettingsSectionTitle(title: 'valid_tickets_sound'),
           ],
         ),
         const SizedBox(height: 10),

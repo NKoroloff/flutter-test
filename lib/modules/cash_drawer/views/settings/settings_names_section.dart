@@ -13,13 +13,13 @@ class SettingsNamesSection extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const SettingsSectionTitle(title: 'deviceName'),
+          const SettingsSectionTitle(title: 'device_name'),
           const SizedBox(height: 10),
           const CustomInput(),
           const SizedBox(height: 10),
-          Text('uniqueDeviceName'.tr, style: const TextStyle(color: Colors.red)),
+          Text('uniquedevice_name'.tr, style: const TextStyle(color: Colors.red)),
           const SizedBox(height: 20),
-          const SettingsSectionTitle(title: 'serverName'),
+          const SettingsSectionTitle(title: 'server_name'),
           const SizedBox(height: 10),
           const CustomInput(),
         ],

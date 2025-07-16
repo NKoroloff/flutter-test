@@ -16,7 +16,7 @@ class WirelessPrintingOptionsSection extends StatelessWidget {
         const Row(
           children: [
             SizedBox(width: 20),
-            SettingsSectionTitle(title: 'wirelessPrintOptions'),
+            SettingsSectionTitle(title: 'wireless_print_options'),
           ],
         ),
         const SizedBox(height: 10),
@@ -34,22 +34,22 @@ class WirelessPrintingOptionsSection extends StatelessWidget {
                 ],
               ),
               const Divider(height: 1, color: Color.fromARGB(255, 202, 202, 202)),
-              const SettingsLabeledSwitch(label: 'enablePrintFunct'),
+              const SettingsLabeledSwitch(label: 'enable_print_funct'),
               const Divider(height: 1, color: Color.fromARGB(255, 202, 202, 202)),
-              const SettingsLabeledSwitch(label: 'enablePrintedReceipts'),
+              const SettingsLabeledSwitch(label: 'enable_printed_receipts'),
               const Divider(height: 1, color: Color.fromARGB(255, 202, 202, 202)),
-              SettingsSelectOption(isSelected: false, onTap: () {}, label: 'alwaysPrint'),
+              SettingsSelectOption(isSelected: false, onTap: () {}, label: 'always_print'),
               const Divider(height: 1, color: Color.fromARGB(255, 202, 202, 202)),
               SettingsSelectOption(
                 isSelected: true,
                 onTap: () {
                   print('helo');
                 },
-                label: 'askAfterEachSale',
+                label: 'ask_after_each_sale',
               ),
 
               const Divider(height: 1, color: Color.fromARGB(255, 202, 202, 202)),
-              const SettingsLabeledSwitch(label: 'signedCCReceipt'),
+              const SettingsLabeledSwitch(label: 'signed_cc_receipt'),
             ],
           ),
         ),

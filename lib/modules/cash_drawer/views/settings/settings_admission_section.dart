@@ -14,7 +14,7 @@ class SettingsAdmissionSection extends StatelessWidget {
         Row(
           children: [
             SizedBox(width: 20),
-            SettingsSectionTitle(title: 'admsOptions'),
+            SettingsSectionTitle(title: 'adms_options'),
           ],
         ),
         SizedBox(height: 10),
@@ -23,13 +23,13 @@ class SettingsAdmissionSection extends StatelessWidget {
             spacing: 10,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SettingsLabeledSwitch(label: 'enablePrintFeature'),
+              SettingsLabeledSwitch(label: 'enable_print_feature'),
               Divider(height: 1, color: Color.fromARGB(255, 202, 202, 202)),
-              SettingsLabeledSwitch(label: 'enableAdmittingFeature'),
+              SettingsLabeledSwitch(label: 'enable_admitting_feature'),
               Divider(height: 1, color: Color.fromARGB(255, 202, 202, 202)),
-              SettingsLabeledSwitch(label: 'enableTicketIssuing'),
+              SettingsLabeledSwitch(label: 'enable_ticket_issuing'),
               Divider(height: 1, color: Color.fromARGB(255, 202, 202, 202)),
-              SettingsLabeledSwitch(label: 'enableScanIn'),
+              SettingsLabeledSwitch(label: 'enable_scan_in'),
             ],
           ),
         ),
