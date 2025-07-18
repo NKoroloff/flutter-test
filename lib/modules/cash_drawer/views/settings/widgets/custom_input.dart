@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class CustomInput extends StatelessWidget {
   const CustomInput({
@@ -6,12 +7,14 @@ class CustomInput extends StatelessWidget {
     this.initialValue = '',
     this.onClear,
     this.suffix,
+    this.label,
     super.key,
   });
   final void Function(String) onChanged;
   final void Function()? onClear;
   final String initialValue;
   final Widget? suffix;
+  final String? label;
 
   @override
   Widget build(BuildContext context) {
@@ -19,8 +22,10 @@ class CustomInput extends StatelessWidget {
       padding: const EdgeInsets.only(right: 10.0),
       child: TextFormField(
         onChanged: onChanged,
+
         initialValue: initialValue,
         decoration: InputDecoration(
+          label: label != null ? Text(label!.tr) : null,
           contentPadding: EdgeInsets.all(10),
           hintText: 'Enter...',
           suffixIcon:

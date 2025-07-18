@@ -2,8 +2,8 @@ Map<String, String> en = {
   'hello': 'Hello world',
   'current': 'English is here',
   'wireless_print_options': 'Wireless Printing Options',
-  'device_name': 'Device Name:',
-  'server_name': 'Server Name:',
+  'device_name': 'Device Name',
+  'server_name': 'Server Name',
   'enable_print_funct': 'Enable Printing Functionality',
   'enable_printed_receipts': 'Enable Printed Receipts',
   'ask_after_each_sale': 'Ask after each sale',
@@ -63,4 +63,6 @@ Map<String, String> en = {
   'save': 'Save',
   'cancel': 'Cancel',
   'delete_price': 'Delete Price',
+  'price': 'Price',
+  'quantity_available': 'Quantity Available',
 };

@@ -33,8 +33,9 @@ class EditPricesView extends StatelessWidget {
                 child: Row(
                   spacing: 20,
                   children: [
-                    Text('Name'),
-                    Expanded(child: CustomInput(onChanged: (value) {}, onClear: () {})),
+                    Expanded(
+                      child: CustomInput(label: 'Name', onChanged: (value) {}, onClear: () {}),
+                    ),
                   ],
                 ),
               ),
@@ -52,8 +53,10 @@ class EditPricesView extends StatelessWidget {
                       spacing: 20,
                       children: [
                         SizedBox(width: 20),
-                        Text('Name'),
-                        Expanded(child: CustomInput(onChanged: (value) {}, onClear: () {})),
+
+                        Expanded(
+                          child: CustomInput(label: 'price', onChanged: (value) {}, onClear: () {}),
+                        ),
                       ],
                     ),
                     CustomDivider(),
@@ -61,8 +64,13 @@ class EditPricesView extends StatelessWidget {
                       spacing: 20,
                       children: [
                         SizedBox(width: 20),
-                        Text('Name'),
-                        Expanded(child: CustomInput(onChanged: (value) {}, onClear: () {})),
+                        Expanded(
+                          child: CustomInput(
+                            label: 'quantity_available',
+                            onChanged: (value) {},
+                            onClear: () {},
+                          ),
+                        ),
                       ],
                     ),
                   ],

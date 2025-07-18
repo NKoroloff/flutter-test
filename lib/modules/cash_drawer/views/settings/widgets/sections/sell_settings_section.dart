@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:purplepass_test_task/modules/cash_drawer/views/settings/widgets/custom_divider.dart';
 import 'package:purplepass_test_task/modules/cash_drawer/views/settings/widgets/custom_input.dart';
 import 'package:purplepass_test_task/modules/cash_drawer/views/settings/widgets/settings_container_wrapper.dart';
@@ -48,9 +47,7 @@ class SellSettingsSection extends StatelessWidget {
               Row(
                 children: [
                   const SizedBox(width: 20),
-                  Text('default'.tr),
-                  const SizedBox(width: 10),
-                  Expanded(child: CustomInput(onChanged: (value) {})),
+                  Expanded(child: CustomInput(label: 'default', onChanged: (value) {})),
                   const SizedBox(width: 20),
                 ],
               ),
