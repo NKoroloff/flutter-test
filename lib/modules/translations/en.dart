@@ -55,4 +55,12 @@ Map<String, String> en = {
 
   'clear_local_data': 'Clear Local Data',
   'reset_to_default': 'Reset to Default',
+  'custom_price_qty': 'Custom Price/Quantity',
+  'edit_prices': 'Edit Prices',
+  'hide_ticket_type': 'Hide Ticket Type',
+  'color': 'Color',
+  'priority_high_on_top': 'Priority (higher on top)',
+  'save': 'Save',
+  'cancel': 'Cancel',
+  'delete_price': 'Delete Price',
 };
