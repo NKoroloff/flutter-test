@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:purplepass_test_task/modules/cash_drawer/views/settings/widgets/custom_divider.dart';
 import 'package:purplepass_test_task/modules/cash_drawer/views/settings/widgets/settings_container_wrapper.dart';
-import 'package:purplepass_test_task/modules/cash_drawer/views/settings/widgets/settings_labeled_switch.dart';
+import 'package:purplepass_test_task/modules/cash_drawer/views/settings/widgets/custom_labeled_switch.dart';
 import 'package:purplepass_test_task/modules/cash_drawer/views/settings/widgets/settings_section_title.dart';
 
 class DeviceSettingsSection extends StatelessWidget {
@@ -13,12 +13,7 @@ class DeviceSettingsSection extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Row(
-          children: [
-            SizedBox(width: 20),
-            SettingsSectionTitle(title: 'device_settings'),
-          ],
-        ),
+        const Row(children: [SizedBox(width: 20), SettingsSectionTitle(title: 'device_settings')]),
         const SizedBox(height: 10),
         SettingsContainerWrapper(
           child: Column(
@@ -34,19 +29,19 @@ class DeviceSettingsSection extends StatelessWidget {
                 ],
               ),
               const CustomDivider(),
-              SettingsLabeledSwitch(
+              CustomLabeledSwitch(
                 value: true,
                 onChanged: (value) {},
                 label: 'check_unknown_serials',
               ),
               const CustomDivider(),
-              SettingsLabeledSwitch(
+              CustomLabeledSwitch(
                 value: true,
                 onChanged: (value) {},
                 label: 'enable_infinite_peripheral_gear',
               ),
               const CustomDivider(),
-              SettingsLabeledSwitch(value: true, onChanged: (value) {}, label: 'continuous_scan'),
+              CustomLabeledSwitch(value: true, onChanged: (value) {}, label: 'continuous_scan'),
             ],
           ),
         ),

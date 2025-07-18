@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:purplepass_test_task/modules/cash_drawer/views/settings/widgets/custom_divider.dart';
 import 'package:purplepass_test_task/modules/cash_drawer/views/settings/widgets/settings_select_option.dart';
 import 'package:purplepass_test_task/modules/cash_drawer/views/settings/widgets/settings_container_wrapper.dart';
-import 'package:purplepass_test_task/modules/cash_drawer/views/settings/widgets/settings_labeled_switch.dart';
+import 'package:purplepass_test_task/modules/cash_drawer/views/settings/widgets/custom_labeled_switch.dart';
 import 'package:purplepass_test_task/modules/cash_drawer/views/settings/widgets/settings_section_title.dart';
 
 class WirelessPrintingOptionsSection extends StatelessWidget {
@@ -15,10 +15,7 @@ class WirelessPrintingOptionsSection extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const Row(
-          children: [
-            SizedBox(width: 20),
-            SettingsSectionTitle(title: 'wireless_print_options'),
-          ],
+          children: [SizedBox(width: 20), SettingsSectionTitle(title: 'wireless_print_options')],
         ),
         const SizedBox(height: 10),
         SettingsContainerWrapper(
@@ -35,13 +32,9 @@ class WirelessPrintingOptionsSection extends StatelessWidget {
                 ],
               ),
               CustomDivider(),
-              SettingsLabeledSwitch(
-                value: true,
-                onChanged: (value) {},
-                label: 'enable_print_funct',
-              ),
+              CustomLabeledSwitch(value: true, onChanged: (value) {}, label: 'enable_print_funct'),
               CustomDivider(),
-              SettingsLabeledSwitch(
+              CustomLabeledSwitch(
                 value: true,
                 onChanged: (value) {},
                 label: 'enable_printed_receipts',
@@ -58,7 +51,7 @@ class WirelessPrintingOptionsSection extends StatelessWidget {
               ),
 
               CustomDivider(),
-              SettingsLabeledSwitch(value: true, onChanged: (value) {}, label: 'signed_cc_receipt'),
+              CustomLabeledSwitch(value: true, onChanged: (value) {}, label: 'signed_cc_receipt'),
             ],
           ),
         ),
