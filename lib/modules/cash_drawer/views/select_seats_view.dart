@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/utils.dart';
+import 'package:purplepass_test_task/modules/cash_drawer/models/inventory_button_model.dart';
 import 'package:purplepass_test_task/modules/cash_drawer/views/settings/widgets/inventory_button.dart';
 
 class SelectSeatsView extends StatelessWidget {
@@ -8,54 +9,30 @@ class SelectSeatsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final items = [
-      {
-        'variant': InventoryButtonVariant.outlined,
-        'onTap': () {},
-        'label': 'label',
-        'price': '144',
-        'info': 'info',
-        'color': Colors.green,
-      },
-      {
-        'variant': InventoryButtonVariant.outlined,
-        'onTap': () {},
-        'label': 'label',
-        'price': '144',
-
-        'color': Colors.orange,
-      },
-      {
-        'variant': InventoryButtonVariant.outlined,
-        'onTap': () {},
-        'label': 'label',
-        'price': '144',
-        'info': 'info',
-        'color': Colors.red,
-      },
-      {
-        'variant': InventoryButtonVariant.outlined,
-        'onTap': () {},
-        'label': 'label',
-        'price': '144',
-        'info': 'info',
-        'color': Colors.red,
-      },
-      {
-        'variant': InventoryButtonVariant.outlined,
-        'onTap': () {},
-        'label': 'label',
-        'price': '144',
-        'info': 'info',
-        'color': Colors.red,
-      },
-      {
-        'variant': InventoryButtonVariant.outlined,
-        'onTap': () {},
-        'label': 'label',
-        'price': '144',
-        'info': 'info',
-        'color': Colors.blue,
-      },
+      InventoryItem(
+        variant: InventoryButtonVariant.outlined,
+        onTap: () {},
+        label: 'label',
+        price: '144',
+        info: 'info',
+        color: Colors.green,
+      ),
+      InventoryItem(
+        variant: InventoryButtonVariant.filled,
+        onTap: () {},
+        label: 'label',
+        price: '144',
+        color: Colors.orange,
+      ),
+      InventoryItem(
+        variant: InventoryButtonVariant.outlined,
+        onTap: () {},
+        label: 'label',
+        price: '144',
+        info: 'info',
+        color: Colors.red,
+        infoBackgroundColor: Colors.black,
+      ),
     ];
 
     return Scaffold(
@@ -72,25 +49,38 @@ class SelectSeatsView extends StatelessWidget {
       backgroundColor: const Color.fromARGB(128, 241, 241, 241),
       body: Padding(
         padding: const EdgeInsets.all(8),
-        child: GridView.builder(
-          gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-            maxCrossAxisExtent: 200,
-            mainAxisSpacing: 8,
-            crossAxisSpacing: 8,
-            mainAxisExtent: 79,
-          ),
-          itemCount: items.length,
-          itemBuilder: (context, index) {
-            final item = items[index];
-            return InventoryButton(
-              variant: item['variant'] as InventoryButtonVariant,
-              onTap: item['onTap'] as VoidCallback,
-              label: item['label'] as String,
-              price: item['price'] as String,
-              info: item['info'] != null ? item['info'] as String : null,
-              color: item['color'] as Color,
-            );
-          },
+
+        child: Column(
+          spacing: 10,
+          children: [
+            OutlinedButton(onPressed: () {}, child: Text('select_seats'.tr)),
+
+            Expanded(
+              child: GridView.builder(
+                itemCount: items.length,
+                padding: const EdgeInsets.only(bottom: 8),
+                gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+                  maxCrossAxisExtent: 200,
+                  mainAxisSpacing: 8,
+                  crossAxisSpacing: 8,
+                  mainAxisExtent: 79,
+                ),
+                itemBuilder: (context, index) {
+                  final item = items[index];
+                  return InventoryButton(
+                    variant: item.variant,
+                    onTap: item.onTap,
+                    label: item.label,
+                    price: item.price,
+                    info: item.info,
+                    color: item.color,
+                  );
+                },
+              ),
+            ),
+
+            OutlinedButton(onPressed: () {}, child: Text('cancel'.tr)),
+          ],
         ),
       ),
     );

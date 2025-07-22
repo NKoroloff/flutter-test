@@ -65,4 +65,5 @@ Map<String, String> en = {
   'delete_price': 'Delete Price',
   'price': 'Price',
   'quantity_available': 'Quantity Available',
+  'select_seats': 'Select Seats',
 };

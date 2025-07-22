@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-enum InventoryButtonVariant { outlined, filled }
+import 'package:purplepass_test_task/modules/cash_drawer/models/inventory_button_model.dart';
 
 bool isDark(Color color) {
   final luminance = color.computeLuminance();

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/utils.dart';
-import 'package:purplepass_test_task/modules/cash_drawer/views/settings/widgets/inventory_button.dart';
 import './settings_imports.dart';
 
 class SettingsView extends StatelessWidget {
@@ -40,46 +39,6 @@ class SettingsView extends StatelessWidget {
               CompTicketsSection(),
               TextButton(onPressed: () {}, child: Text('clear_local_data'.tr)),
               TextButton(onPressed: () {}, child: Text('reset_to_default'.tr)),
-              InventoryButton(
-                color: Colors.blue,
-                onTap: () {},
-                variant: InventoryButtonVariant.filled,
-                label: 'hello',
-                price: '25',
-              ),
-              SizedBox(
-                // height: 62,
-                width: 200,
-                child: InventoryButton(
-                  color: Colors.blue,
-                  onTap: () {},
-                  variant: InventoryButtonVariant.outlined,
-                  label: 'helloasddddasl;ds;dfddddddsdkfgpkdf[h[dfhk[kkk[kasdk]]]]',
-                  price: '2asdf[psdg5',
-                  info: 'sdffdddddddddddsldflkdsgojpk',
-                  // infoBackgroundColor: Colors.grey[400],
-                ),
-              ),
-              InventoryButton(
-                disabled: true,
-                color: Colors.blue,
-                onTap: () {},
-                variant: InventoryButtonVariant.outlined,
-                label: 'helloasddddasl;ds;dfddddddsdkfgpkdf[h[dfhk[kkk[kasdk]]]]',
-                price: '2asdf[psdg5',
-                info: 'sdffdddddddddddsldflkdsgojpk',
-                // infoBackgroundColor: Colors.grey[400],
-              ),
-              InventoryButton(
-                disabled: true,
-                color: Colors.blue,
-                onTap: () {},
-                variant: InventoryButtonVariant.filled,
-                label: 'helloasddddasl;ds;dfddddddsdkfgpkdf[h[dfhk[kkk[kasdk]]]]',
-                price: '2asdf[psdg5',
-                info: 'sdffdddddddddddsldflkdsgojpk',
-                // infoBackgroundColor: Colors.grey[400],
-              ),
             ],
           ),
         ),
