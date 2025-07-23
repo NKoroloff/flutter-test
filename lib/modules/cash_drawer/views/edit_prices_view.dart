@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/utils.dart';
 import 'package:purplepass_test_task/modules/cash_drawer/views/settings/settings_imports.dart';
 import 'package:purplepass_test_task/modules/cash_drawer/views/settings/widgets/custom_divider.dart';
-import 'package:purplepass_test_task/modules/cash_drawer/views/settings/widgets/custom_input.dart';
+// import 'package:purplepass_test_task/modules/cash_drawer/views/settings/widgets/custom_input.dart';
 import 'package:purplepass_test_task/modules/cash_drawer/views/settings/widgets/settings_number_input.dart';
 
 class EditPricesView extends StatelessWidget {
@@ -33,9 +33,9 @@ class EditPricesView extends StatelessWidget {
                 child: Row(
                   spacing: 20,
                   children: [
-                    Expanded(
-                      child: CustomInput(label: 'Name', onChanged: (value) {}, onClear: () {}),
-                    ),
+                    // Expanded(
+                    //   child: CustomInput(label: 'Name', onChanged: (value) {}, onClear: () {}),
+                    // ),
                   ],
                 ),
               ),
@@ -54,9 +54,9 @@ class EditPricesView extends StatelessWidget {
                       children: [
                         SizedBox(width: 20),
 
-                        Expanded(
-                          child: CustomInput(label: 'price', onChanged: (value) {}, onClear: () {}),
-                        ),
+                        // Expanded(
+                        //   child: CustomInput(label: 'price', onChanged: (value) {}, onClear: () {}),
+                        // ),
                       ],
                     ),
                     CustomDivider(),
@@ -64,13 +64,13 @@ class EditPricesView extends StatelessWidget {
                       spacing: 20,
                       children: [
                         SizedBox(width: 20),
-                        Expanded(
-                          child: CustomInput(
-                            label: 'quantity_available',
-                            onChanged: (value) {},
-                            onClear: () {},
-                          ),
-                        ),
+                        // Expanded(
+                        //   child: CustomInput(
+                        //     label: 'quantity_available',
+                        //     onChanged: (value) {},
+                        //     onClear: () {},
+                        //   ),
+                        // ),
                       ],
                     ),
                   ],

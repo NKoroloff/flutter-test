@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:purplepass_test_task/modules/cash_drawer/views/settings/widgets/custom_divider.dart';
-import 'package:purplepass_test_task/modules/cash_drawer/views/settings/widgets/custom_input.dart';
+// import 'package:purplepass_test_task/modules/cash_drawer/views/settings/widgets/custom_input.dart';
 import 'package:purplepass_test_task/modules/cash_drawer/views/settings/widgets/settings_container_wrapper.dart';
 import 'package:purplepass_test_task/modules/cash_drawer/views/settings/widgets/custom_labeled_switch.dart';
 import 'package:purplepass_test_task/modules/cash_drawer/views/settings/widgets/settings_section_title.dart';
@@ -13,7 +13,12 @@ class SellSettingsSection extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Row(children: [SizedBox(width: 20), SettingsSectionTitle(title: 'sell_settigs')]),
+        const Row(
+          children: [
+            SizedBox(width: 20),
+            SettingsSectionTitle(title: 'sell_settigs'),
+          ],
+        ),
         const SizedBox(height: 10),
         SettingsContainerWrapper(
           child: Column(
@@ -47,7 +52,7 @@ class SellSettingsSection extends StatelessWidget {
               Row(
                 children: [
                   const SizedBox(width: 20),
-                  Expanded(child: CustomInput(label: 'default', onChanged: (value) {})),
+                  // Expanded(child: CustomInput(label: 'default', onChanged: (value) {})),
                   const SizedBox(width: 20),
                 ],
               ),
