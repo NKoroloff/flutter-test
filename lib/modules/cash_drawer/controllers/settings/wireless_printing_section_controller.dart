@@ -18,7 +18,7 @@ class WirelessPrintingSectionController extends GetxController {
     enablePrintedReceiptsMethod.value = value;
   }
 
-  final RxBool signedCcReceipt = false.obs;
+  final RxBool signedCcReceipt = true.obs;
 
   void toggleSignedCcReceipt(bool newValue) {
     signedCcReceipt.value = newValue;

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:purplepass_test_task/modules/cash_drawer/controllers/settings/admission_option_controller.dart';
 import 'package:purplepass_test_task/modules/cash_drawer/views/settings/widgets/custom_divider.dart';
 import 'package:purplepass_test_task/modules/cash_drawer/views/settings/widgets/settings_container_wrapper.dart';
 import 'package:purplepass_test_task/modules/cash_drawer/views/settings/widgets/custom_labeled_switch.dart';
@@ -9,35 +11,53 @@ class SettingsAdmissionSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.find<AdmissionOptionsController>();
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Row(children: const [SizedBox(width: 20), SettingsSectionTitle(title: 'adms_options')]),
+        Row(
+          children: const [
+            SizedBox(width: 20),
+            SettingsSectionTitle(title: 'adms_options'),
+          ],
+        ),
         SizedBox(height: 10),
         SettingsContainerWrapper(
           child: Column(
             spacing: 10,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              CustomLabeledSwitch(
-                value: true,
-                onChanged: (value) {},
-                label: 'enable_print_feature',
+              Obx(
+                () => CustomLabeledSwitch(
+                  value: controller.admissionOptionsModel.value.enablePrintingFeature,
+                  onChanged: controller.toggleEnablePrintingFeature,
+                  label: 'enable_print_feature',
+                ),
               ),
               CustomDivider(),
-              CustomLabeledSwitch(
-                value: true,
-                onChanged: (value) {},
-                label: 'enable_admitting_feature',
+              Obx(
+                () => CustomLabeledSwitch(
+                  value: controller.enableAdmitting.value,
+                  onChanged: controller.toggleEnableAdmitting,
+                  label: 'enable_admitting_feature',
+                ),
               ),
               CustomDivider(),
-              CustomLabeledSwitch(
-                value: true,
-                onChanged: (value) {},
-                label: 'enable_ticket_issuing',
+              Obx(
+                () => CustomLabeledSwitch(
+                  value: controller.enableTicketIssuing.value,
+                  onChanged: controller.toggleEnableTicketIssuing,
+                  label: 'enable_ticket_issuing',
+                ),
               ),
               CustomDivider(),
-              CustomLabeledSwitch(value: true, onChanged: (value) {}, label: 'enable_scan_in'),
+              Obx(
+                () => CustomLabeledSwitch(
+                  value: controller.enableScanIn.value,
+                  onChanged: controller.toggleEnableScanIn,
+                  label: 'enable_scan_in',
+                ),
+              ),
             ],
           ),
         ),

@@ -1,0 +1,25 @@
+{
+  "version": "0.2.0",
+"configurations": [
+    {
+        "name": "xxx",
+        "request": "launch",
+        "type": "dart",
+        "args": ["--web-experimental-hot-reload"]
+    },
+    {
+        "name": "xxx (profile mode)",
+        "request": "launch",
+        "type": "dart",
+        "flutterMode": "profile",
+        "args": ["--web-experimental-hot-reload"]
+    },
+    {
+        "name": "xxx (release mode)",
+        "request": "launch",
+        "type": "dart",
+        "flutterMode": "release",
+        "args": ["--web-experimental-hot-reload"]
+    }
+]
+}
