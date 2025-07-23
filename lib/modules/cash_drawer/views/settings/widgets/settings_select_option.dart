@@ -10,7 +10,7 @@ class SettingsSelectOption extends StatelessWidget {
   });
   final String label;
   final bool isSelected;
-  final VoidCallback onTap;
+  final void Function() onTap;
 
   @override
   Widget build(BuildContext context) {

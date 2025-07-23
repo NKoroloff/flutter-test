@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:purplepass_test_task/modules/cash_drawer/controllers/settings/wireless_printing_section_controller.dart';
 import 'package:purplepass_test_task/modules/cash_drawer/views/settings/widgets/custom_divider.dart';
 import 'package:purplepass_test_task/modules/cash_drawer/views/settings/widgets/settings_select_option.dart';
 import 'package:purplepass_test_task/modules/cash_drawer/views/settings/widgets/settings_container_wrapper.dart';
@@ -11,11 +12,15 @@ class WirelessPrintingOptionsSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.find<WirelessPrintingSectionController>();
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const Row(
-          children: [SizedBox(width: 20), SettingsSectionTitle(title: 'wireless_print_options')],
+          children: [
+            SizedBox(width: 20),
+            SettingsSectionTitle(title: 'wireless_print_options'),
+          ],
         ),
         const SizedBox(height: 10),
         SettingsContainerWrapper(
@@ -32,26 +37,47 @@ class WirelessPrintingOptionsSection extends StatelessWidget {
                 ],
               ),
               CustomDivider(),
-              CustomLabeledSwitch(value: true, onChanged: (value) {}, label: 'enable_print_funct'),
-              CustomDivider(),
-              CustomLabeledSwitch(
-                value: true,
-                onChanged: (value) {},
-                label: 'enable_printed_receipts',
+              Obx(
+                () => CustomLabeledSwitch(
+                  value: controller.enablePrintingFunc.value,
+                  onChanged: controller.toggleEnablePrintingFunc,
+                  label: 'enable_print_funct',
+                ),
               ),
               CustomDivider(),
-              SettingsSelectOption(isSelected: false, onTap: () {}, label: 'always_print'),
-              CustomDivider(),
-              SettingsSelectOption(
-                isSelected: true,
-                onTap: () {
-                  print('helo');
-                },
-                label: 'ask_after_each_sale',
+              Obx(
+                () => CustomLabeledSwitch(
+                  value: controller.enablePrintedReceipts.value,
+                  onChanged: controller.toggleEnablePrintedReceipts,
+                  label: 'enable_printed_receipts',
+                ),
               ),
 
               CustomDivider(),
-              CustomLabeledSwitch(value: true, onChanged: (value) {}, label: 'signed_cc_receipt'),
+              Obx(
+                () => SettingsSelectOption(
+                  isSelected: controller.enablePrintedReceiptsMethod.value == 'always',
+                  onTap: () => controller.toggleMethod('always'),
+                  label: 'always_print',
+                ),
+              ),
+              CustomDivider(),
+              Obx(
+                () => SettingsSelectOption(
+                  isSelected: controller.enablePrintedReceiptsMethod.value == 'after',
+                  onTap: () => controller.toggleMethod('after'),
+                  label: 'ask_after_each_sale',
+                ),
+              ),
+
+              CustomDivider(),
+              Obx(
+                () => CustomLabeledSwitch(
+                  value: controller.signedCcReceipt.value,
+                  onChanged: controller.toggleSignedCcReceipt,
+                  label: 'signed_cc_receipt',
+                ),
+              ),
             ],
           ),
         ),

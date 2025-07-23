@@ -19,7 +19,6 @@ class _CustomInputState extends State<CustomInput> {
     super.initState();
     _controller = TextEditingController(text: widget.value.value);
 
-    // Слушаем внешние изменения
     ever(widget.value, (val) {
       if (_controller.text != val) {
         _controller.text = val;
