@@ -1,19 +1,26 @@
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:purplepass_test_task/modules/cash_drawer/views/settings/widgets/custom_divider.dart';
+import 'package:flutter/material.dart';
 import 'package:purplepass_test_task/modules/cash_drawer/views/settings/widgets/settings_container_wrapper.dart';
-import 'package:purplepass_test_task/modules/cash_drawer/views/settings/widgets/custom_labeled_switch.dart';
+import 'package:purplepass_test_task/modules/cash_drawer/controllers/settings/device_settings_controller.dart';
 import 'package:purplepass_test_task/modules/cash_drawer/views/settings/widgets/settings_section_title.dart';
+import 'package:purplepass_test_task/modules/cash_drawer/views/settings/widgets/custom_labeled_switch.dart';
+import 'package:purplepass_test_task/modules/cash_drawer/views/settings/widgets/custom_divider.dart';
 
 class DeviceSettingsSection extends StatelessWidget {
   const DeviceSettingsSection({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.find<DeviceSettingsController>();
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Row(children: [SizedBox(width: 20), SettingsSectionTitle(title: 'device_settings')]),
+        const Row(
+          children: [
+            SizedBox(width: 20),
+            SettingsSectionTitle(title: 'device_settings'),
+          ],
+        ),
         const SizedBox(height: 10),
         SettingsContainerWrapper(
           child: Column(
@@ -29,19 +36,32 @@ class DeviceSettingsSection extends StatelessWidget {
                 ],
               ),
               const CustomDivider(),
-              CustomLabeledSwitch(
-                value: true,
-                onChanged: (value) {},
-                label: 'check_unknown_serials',
+              Obx(
+                () => CustomLabeledSwitch(
+                  label: 'check_unknown_serials',
+                  onChanged: (newValue) =>
+                      controller.handleDeviceSettingsToggle('checkUnknownSerials', newValue),
+                  value: controller.deviceSettingsModel.value.checkUnknownSerials,
+                ),
               ),
               const CustomDivider(),
-              CustomLabeledSwitch(
-                value: true,
-                onChanged: (value) {},
-                label: 'enable_infinite_peripheral_gear',
+              Obx(
+                () => CustomLabeledSwitch(
+                  onChanged: (newValue) =>
+                      controller.handleDeviceSettingsToggle('enableGear', newValue),
+                  value: controller.deviceSettingsModel.value.enableGear,
+                  label: 'enable_infinite_peripheral_gear',
+                ),
               ),
               const CustomDivider(),
-              CustomLabeledSwitch(value: true, onChanged: (value) {}, label: 'continuous_scan'),
+              Obx(
+                () => CustomLabeledSwitch(
+                  onChanged: (newValue) =>
+                      controller.handleDeviceSettingsToggle('continuousScan', newValue),
+                  value: controller.deviceSettingsModel.value.continuousScan,
+                  label: 'continuous_scan',
+                ),
+              ),
             ],
           ),
         ),

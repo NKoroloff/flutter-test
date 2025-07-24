@@ -11,7 +11,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const initial = Routes.cashDrawer;
+  static const initial = Routes.settings;
 
   static final routes = [
     GetPage<CashDrawerView>(

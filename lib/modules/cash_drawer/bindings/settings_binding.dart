@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:purplepass_test_task/modules/cash_drawer/controllers/settings/admission_option_controller.dart';
 import 'package:purplepass_test_task/modules/cash_drawer/controllers/settings/device_name_controller.dart';
+import 'package:purplepass_test_task/modules/cash_drawer/controllers/settings/device_settings_controller.dart';
 import 'package:purplepass_test_task/modules/cash_drawer/controllers/settings/server_name_controller.dart';
 import 'package:purplepass_test_task/modules/cash_drawer/controllers/settings/wireless_printing_section_controller.dart';
 import 'package:purplepass_test_task/modules/translations/app_translation.dart';
@@ -13,5 +14,6 @@ class SettingsBinding extends Bindings {
     Get.put<ServerNameController>(ServerNameController());
     Get.put<WirelessPrintingSectionController>(WirelessPrintingSectionController());
     Get.put<AdmissionOptionsController>(AdmissionOptionsController());
+    Get.put<DeviceSettingsController>(DeviceSettingsController());
   }
 }

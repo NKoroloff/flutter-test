@@ -39,7 +39,7 @@ class WirelessPrintingOptionsSection extends StatelessWidget {
               CustomDivider(),
               Obx(
                 () => CustomLabeledSwitch(
-                  value: controller.enablePrintingFunc.value,
+                  value: controller.wirelessPrintingOptionsModel.value.enablePrintingFunc,
                   onChanged: controller.toggleEnablePrintingFunc,
                   label: 'enable_print_funct',
                 ),
@@ -47,7 +47,8 @@ class WirelessPrintingOptionsSection extends StatelessWidget {
               CustomDivider(),
               Obx(
                 () => CustomLabeledSwitch(
-                  value: controller.enablePrintedReceipts.value,
+                  disabled: !controller.wirelessPrintingOptionsModel.value.enablePrintingFunc,
+                  value: controller.wirelessPrintingOptionsModel.value.enablePrintedReceipts,
                   onChanged: controller.toggleEnablePrintedReceipts,
                   label: 'enable_printed_receipts',
                 ),
@@ -56,7 +57,9 @@ class WirelessPrintingOptionsSection extends StatelessWidget {
               CustomDivider(),
               Obx(
                 () => SettingsSelectOption(
-                  isSelected: controller.enablePrintedReceiptsMethod.value == 'always',
+                  disabled: !controller.wirelessPrintingOptionsModel.value.enablePrintingFunc,
+                  isSelected:
+                      controller.wirelessPrintingOptionsModel.value.printingMethod == 'always',
                   onTap: () => controller.toggleMethod('always'),
                   label: 'always_print',
                 ),
@@ -64,7 +67,9 @@ class WirelessPrintingOptionsSection extends StatelessWidget {
               CustomDivider(),
               Obx(
                 () => SettingsSelectOption(
-                  isSelected: controller.enablePrintedReceiptsMethod.value == 'after',
+                  disabled: !controller.wirelessPrintingOptionsModel.value.enablePrintingFunc,
+                  isSelected:
+                      controller.wirelessPrintingOptionsModel.value.printingMethod == 'after',
                   onTap: () => controller.toggleMethod('after'),
                   label: 'ask_after_each_sale',
                 ),
@@ -73,7 +78,8 @@ class WirelessPrintingOptionsSection extends StatelessWidget {
               CustomDivider(),
               Obx(
                 () => CustomLabeledSwitch(
-                  value: controller.signedCcReceipt.value,
+                  disabled: !controller.wirelessPrintingOptionsModel.value.enablePrintingFunc,
+                  value: controller.wirelessPrintingOptionsModel.value.signedCcReceipt,
                   onChanged: controller.toggleSignedCcReceipt,
                   label: 'signed_cc_receipt',
                 ),

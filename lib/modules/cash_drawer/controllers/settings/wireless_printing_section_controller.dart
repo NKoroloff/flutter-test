@@ -1,26 +1,22 @@
 import 'package:get/get.dart';
+import 'package:purplepass_test_task/modules/cash_drawer/models/wireless_printing_options_model.dart';
 
 class WirelessPrintingSectionController extends GetxController {
-  final RxBool enablePrintingFunc = false.obs;
+  var wirelessPrintingOptionsModel = WirelessPrintingOptionsModel.initial().obs;
 
   void toggleEnablePrintingFunc(bool newValue) {
-    enablePrintingFunc.value = newValue;
+    wirelessPrintingOptionsModel.update((option) => option?.enablePrintingFunc = newValue);
   }
-
-  final RxBool enablePrintedReceipts = false.obs;
 
   void toggleEnablePrintedReceipts(bool newValue) {
-    enablePrintedReceipts.value = newValue;
+    wirelessPrintingOptionsModel.update((option) => option?.enablePrintedReceipts = newValue);
   }
 
-  final RxString enablePrintedReceiptsMethod = 'always'.obs;
   void toggleMethod(String value) {
-    enablePrintedReceiptsMethod.value = value;
+    wirelessPrintingOptionsModel.update((option) => option?.printingMethod = value);
   }
-
-  final RxBool signedCcReceipt = true.obs;
 
   void toggleSignedCcReceipt(bool newValue) {
-    signedCcReceipt.value = newValue;
+    wirelessPrintingOptionsModel.update((option) => option?.signedCcReceipt = newValue);
   }
 }
