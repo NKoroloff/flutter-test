@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 
 class CustomInput extends StatefulWidget {
   final void Function(String) onChanged;
-  final RxString value;
+  final String value;
   final String? label;
   const CustomInput({required this.value, required this.onChanged, this.label, super.key});
 
@@ -19,7 +19,7 @@ class _CustomInputState extends State<CustomInput> {
   @override
   void initState() {
     super.initState();
-    _controller = TextEditingController(text: widget.value.value);
+    _controller = TextEditingController(text: widget.value);
   }
 
   @override

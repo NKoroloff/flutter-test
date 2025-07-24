@@ -21,7 +21,10 @@ class DeviceNameSection extends StatelessWidget {
         ),
         SettingsContainerWrapper(
           padding: EdgeInsetsGeometry.fromLTRB(20, 0, 0, 0),
-          child: CustomInput(value: controller.deviceName, onChanged: controller.updateDeviceName),
+          child: CustomInput(
+            value: controller.deviceName.value,
+            onChanged: controller.updateDeviceName,
+          ),
         ),
         Padding(
           padding: const EdgeInsets.only(left: 20.0),

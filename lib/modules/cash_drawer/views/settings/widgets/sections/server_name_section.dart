@@ -21,7 +21,10 @@ class ServerNameSection extends StatelessWidget {
         ),
         SettingsContainerWrapper(
           padding: EdgeInsetsGeometry.fromLTRB(20, 0, 0, 0),
-          child: CustomInput(onChanged: controller.updateServerName, value: controller.serverName),
+          child: CustomInput(
+            onChanged: controller.updateServerName,
+            value: controller.serverName.value,
+          ),
         ),
       ],
     );
