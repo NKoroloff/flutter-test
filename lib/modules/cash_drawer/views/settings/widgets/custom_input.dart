@@ -5,7 +5,15 @@ class CustomInput extends StatefulWidget {
   final void Function(String) onChanged;
   final String value;
   final String? label;
-  const CustomInput({required this.value, required this.onChanged, this.label, super.key});
+  final bool disabled;
+
+  const CustomInput({
+    required this.value,
+    required this.onChanged,
+    this.label,
+    this.disabled = false,
+    super.key,
+  });
 
   @override
   State<CustomInput> createState() => _CustomInputState();
@@ -42,6 +50,7 @@ class _CustomInputState extends State<CustomInput> {
       padding: const EdgeInsets.only(right: 10.0),
       child: TextFormField(
         controller: _controller,
+        readOnly: widget.disabled,
         onChanged: (value) {
           widget.onChanged(value);
           setState(() {
@@ -56,7 +65,9 @@ class _CustomInputState extends State<CustomInput> {
               ? IconButton(icon: const Icon(Icons.clear), onPressed: _handleClear, iconSize: 20)
               : null,
           border: InputBorder.none,
-          fillColor: const Color.fromARGB(255, 255, 255, 255),
+          fillColor: widget.disabled
+              ? const Color.fromARGB(255, 238, 238, 238)
+              : Color.fromARGB(255, 255, 255, 255),
           filled: true,
         ),
       ),

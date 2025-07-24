@@ -99,6 +99,7 @@ class SellSettingsSection extends StatelessWidget {
                   Obx(
                     () => Expanded(
                       child: CustomInput(
+                        disabled: !controller.sellSettingsModel.value.enableDiscount,
                         label: 'default',
                         value: controller.sellSettingsModel.value.discountDefault,
                         onChanged: (value) =>
