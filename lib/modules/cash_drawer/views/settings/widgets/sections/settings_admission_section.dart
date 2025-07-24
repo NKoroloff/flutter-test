@@ -37,7 +37,7 @@ class SettingsAdmissionSection extends StatelessWidget {
               CustomDivider(),
               Obx(
                 () => CustomLabeledSwitch(
-                  value: controller.enableAdmitting.value,
+                  value: controller.admissionOptionsModel.value.enableAdmitting,
                   onChanged: controller.toggleEnableAdmitting,
                   label: 'enable_admitting_feature',
                 ),
@@ -45,7 +45,7 @@ class SettingsAdmissionSection extends StatelessWidget {
               CustomDivider(),
               Obx(
                 () => CustomLabeledSwitch(
-                  value: controller.enableTicketIssuing.value,
+                  value: controller.admissionOptionsModel.value.enableTicketIssuing,
                   onChanged: controller.toggleEnableTicketIssuing,
                   label: 'enable_ticket_issuing',
                 ),
@@ -53,7 +53,8 @@ class SettingsAdmissionSection extends StatelessWidget {
               CustomDivider(),
               Obx(
                 () => CustomLabeledSwitch(
-                  value: controller.enableScanIn.value,
+                  disabled: !controller.admissionOptionsModel.value.enableTicketIssuing,
+                  value: controller.admissionOptionsModel.value.enableScanIn,
                   onChanged: controller.toggleEnableScanIn,
                   label: 'enable_scan_in',
                 ),

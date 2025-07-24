@@ -15,10 +15,10 @@ class AdmissionOptionsModel {
 
   factory AdmissionOptionsModel.initial() {
     return AdmissionOptionsModel(
-      enablePrintingFeature: true,
+      enablePrintingFeature: false,
       enableAdmitting: true,
-      enableTicketIssuing: true,
-      enableScanIn: true,
+      enableTicketIssuing: false,
+      enableScanIn: false,
     );
   }
 
