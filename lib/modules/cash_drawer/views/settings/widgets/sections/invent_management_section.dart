@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:purplepass_test_task/modules/cash_drawer/controllers/settings/inventory_management_controller.dart';
 import 'package:purplepass_test_task/modules/cash_drawer/views/settings/widgets/settings_container_wrapper.dart';
 import 'package:purplepass_test_task/modules/cash_drawer/views/settings/widgets/custom_labeled_switch.dart';
 import 'package:purplepass_test_task/modules/cash_drawer/views/settings/widgets/settings_section_title.dart';
@@ -8,6 +10,7 @@ class InventManagementSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.find<InventoryManagementController>();
     return Column(
       children: [
         Row(
@@ -22,7 +25,13 @@ class InventManagementSection extends StatelessWidget {
             spacing: 10,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              CustomLabeledSwitch(label: 'enable_over_sell', onChanged: (value) {}, value: false),
+              Obx(
+                () => CustomLabeledSwitch(
+                  label: 'enable_over_sell',
+                  onChanged: controller.toggleOverSell,
+                  value: controller.isEnabledOverSell.value,
+                ),
+              ),
             ],
           ),
         ),

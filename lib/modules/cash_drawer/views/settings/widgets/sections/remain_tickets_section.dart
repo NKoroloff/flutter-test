@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:purplepass_test_task/modules/cash_drawer/controllers/settings/remain_tickets_controller.dart';
 import 'package:purplepass_test_task/modules/cash_drawer/views/settings/widgets/custom_divider.dart';
 import 'package:purplepass_test_task/modules/cash_drawer/views/settings/widgets/settings_container_wrapper.dart';
 import 'package:purplepass_test_task/modules/cash_drawer/views/settings/widgets/settings_section_title.dart';
@@ -9,6 +11,7 @@ class RemainTicketsSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.find<RemainTicketsController>();
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -24,9 +27,21 @@ class RemainTicketsSection extends StatelessWidget {
             spacing: 10,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SettingsSelectOption(label: 'when_less_than25', isSelected: true, onTap: () {}),
+              Obx(
+                () => SettingsSelectOption(
+                  label: 'when_less_than25',
+                  isSelected: controller.showRemainingTicketsMode == 'lessThan25',
+                  onTap: () => controller.handleRemainTickets('lessThan25'),
+                ),
+              ),
               const CustomDivider(),
-              SettingsSelectOption(label: 'always', isSelected: true, onTap: () {}),
+              Obx(
+                () => SettingsSelectOption(
+                  label: 'always',
+                  isSelected: controller.showRemainingTicketsMode == 'always',
+                  onTap: () => controller.handleRemainTickets('always'),
+                ),
+              ),
             ],
           ),
         ),

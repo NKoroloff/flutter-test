@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:purplepass_test_task/modules/cash_drawer/controllers/settings/comp_tickets_controller.dart';
 import 'package:purplepass_test_task/modules/cash_drawer/views/settings/widgets/custom_divider.dart';
 import 'package:purplepass_test_task/modules/cash_drawer/views/settings/widgets/settings_container_wrapper.dart';
 import 'package:purplepass_test_task/modules/cash_drawer/views/settings/widgets/settings_section_title.dart';
@@ -9,6 +11,7 @@ class CompTicketsSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.find<CompTicketsController>();
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -24,15 +27,47 @@ class CompTicketsSection extends StatelessWidget {
             spacing: 10,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SettingsSelectOption(label: 'should_always', isSelected: true, onTap: () {}),
+              Obx(
+                () => SettingsSelectOption(
+                  label: 'should_always',
+                  isSelected: controller.compDeductionMode.value == 'always',
+                  onTap: () => controller.handleCompDeductionMode('always'),
+                ),
+              ),
               const CustomDivider(),
-              SettingsSelectOption(label: 'should_never', isSelected: true, onTap: () {}),
+              Obx(
+                () => SettingsSelectOption(
+                  label: 'should_never',
+                  isSelected: controller.compDeductionMode.value == 'never',
+                  onTap: () => controller.handleCompDeductionMode('never'),
+                ),
+              ),
               const CustomDivider(),
-              SettingsSelectOption(label: 'give_option', isSelected: true, onTap: () {}),
+              Obx(
+                () => SettingsSelectOption(
+                  label: 'give_option',
+                  isSelected: controller.compDeductionMode.value == 'choose',
+                  onTap: () => controller.handleCompDeductionMode('choose'),
+                ),
+              ),
               const CustomDivider(),
-              SettingsSelectOption(label: 'deduct_from', isSelected: true, onTap: () {}),
+              Obx(
+                () => SettingsSelectOption(
+                  disabled: controller.compDeductionMode.value != 'choose',
+                  label: 'deduct_from',
+                  isSelected: controller.compDefaultChoise.value == 'deduct',
+                  onTap: () => controller.handleCompDefaultChoise('deduct'),
+                ),
+              ),
               const CustomDivider(),
-              SettingsSelectOption(label: 'not_deduct_from', isSelected: true, onTap: () {}),
+              Obx(
+                () => SettingsSelectOption(
+                  disabled: controller.compDeductionMode.value != 'choose',
+                  label: 'not_deduct_from',
+                  isSelected: controller.compDefaultChoise.value == 'notDeduct',
+                  onTap: () => controller.handleCompDefaultChoise('notDeduct'),
+                ),
+              ),
             ],
           ),
         ),
