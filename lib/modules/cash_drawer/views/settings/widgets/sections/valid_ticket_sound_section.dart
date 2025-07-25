@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:purplepass_test_task/modules/cash_drawer/controllers/settings/valid_ticket_sounds_controller.dart';
 import 'package:purplepass_test_task/modules/cash_drawer/views/settings/widgets/custom_divider.dart';
 import 'package:purplepass_test_task/modules/cash_drawer/views/settings/widgets/settings_select_option.dart';
 import 'package:purplepass_test_task/modules/cash_drawer/views/settings/widgets/settings_container_wrapper.dart';
@@ -9,6 +11,7 @@ class ValidTicketSoundSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.find<ValidTicketSoundsController>();
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -24,11 +27,29 @@ class ValidTicketSoundSection extends StatelessWidget {
             spacing: 10,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SettingsSelectOption(label: 'Sound 1', isSelected: true, onTap: () {}),
+              Obx(
+                () => SettingsSelectOption(
+                  label: 'Sound 1',
+                  isSelected: controller.sound.value == '1',
+                  onTap: () => controller.handleValidSound('1'),
+                ),
+              ),
               CustomDivider(),
-              SettingsSelectOption(label: 'Sound 2', isSelected: false, onTap: () {}),
+              Obx(
+                () => SettingsSelectOption(
+                  label: 'Sound 2',
+                  isSelected: controller.sound.value == '2',
+                  onTap: () => controller.handleValidSound('2'),
+                ),
+              ),
               CustomDivider(),
-              SettingsSelectOption(label: 'Sound 3', isSelected: false, onTap: () {}),
+              Obx(
+                () => SettingsSelectOption(
+                  label: 'Sound 3',
+                  isSelected: controller.sound.value == '3',
+                  onTap: () => controller.handleValidSound('3'),
+                ),
+              ),
             ],
           ),
         ),
