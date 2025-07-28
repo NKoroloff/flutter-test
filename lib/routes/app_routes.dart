@@ -7,6 +7,7 @@ abstract class Routes {
   static const settings = _Paths.settings;
   static const editPrice = _Paths.editPrices;
   static const selectSeats = _Paths.selectSeats;
+  static const cardInput = _Paths.cardInput;
 }
 
 abstract class _Paths {
@@ -15,4 +16,5 @@ abstract class _Paths {
   static const settings = '/mvc/settings';
   static const editPrices = '/mvc/edit-prices';
   static const selectSeats = '/mvc/select-seats';
+  static const cardInput = '/mvc/card-input';
 }

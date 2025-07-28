@@ -66,4 +66,5 @@ Map<String, String> en = {
   'price': 'Price',
   'quantity_available': 'Quantity Available',
   'select_seats': 'Select Seats',
+  'admit': 'Admit',
 };
