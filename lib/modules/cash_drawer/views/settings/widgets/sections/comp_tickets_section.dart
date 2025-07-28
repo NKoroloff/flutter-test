@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:purplepass_test_task/modules/cash_drawer/controllers/settings/comp_tickets_controller.dart';
+import 'package:purplepass_test_task/modules/cash_drawer/models/comp_tickets_section_model.dart';
 import 'package:purplepass_test_task/modules/cash_drawer/views/settings/widgets/custom_divider.dart';
 import 'package:purplepass_test_task/modules/cash_drawer/views/settings/widgets/settings_container_wrapper.dart';
 import 'package:purplepass_test_task/modules/cash_drawer/views/settings/widgets/settings_section_title.dart';
@@ -30,42 +31,56 @@ class CompTicketsSection extends StatelessWidget {
               Obx(
                 () => SettingsSelectOption(
                   label: 'should_always',
-                  isSelected: controller.compDeductionMode.value == 'always',
-                  onTap: () => controller.handleCompDeductionMode('always'),
+                  isSelected:
+                      controller.compTicketsSectionModel.value.compDeductionMode ==
+                      CompDeductionMode.always,
+                  onTap: () => controller.handleCompDeductionMode(CompDeductionMode.always),
                 ),
               ),
               const CustomDivider(),
               Obx(
                 () => SettingsSelectOption(
                   label: 'should_never',
-                  isSelected: controller.compDeductionMode.value == 'never',
-                  onTap: () => controller.handleCompDeductionMode('never'),
+                  isSelected:
+                      controller.compTicketsSectionModel.value.compDeductionMode ==
+                      CompDeductionMode.never,
+                  onTap: () => controller.handleCompDeductionMode(CompDeductionMode.never),
                 ),
               ),
               const CustomDivider(),
               Obx(
                 () => SettingsSelectOption(
                   label: 'give_option',
-                  isSelected: controller.compDeductionMode.value == 'choose',
-                  onTap: () => controller.handleCompDeductionMode('choose'),
+                  isSelected:
+                      controller.compTicketsSectionModel.value.compDeductionMode ==
+                      CompDeductionMode.choose,
+                  onTap: () => controller.handleCompDeductionMode(CompDeductionMode.choose),
                 ),
               ),
               const CustomDivider(),
               Obx(
                 () => SettingsSelectOption(
-                  disabled: controller.compDeductionMode.value != 'choose',
+                  disabled:
+                      controller.compTicketsSectionModel.value.compDeductionMode !=
+                      CompDeductionMode.choose,
                   label: 'deduct_from',
-                  isSelected: controller.compDefaultChoise.value == 'deduct',
-                  onTap: () => controller.handleCompDefaultChoise('deduct'),
+                  isSelected:
+                      controller.compTicketsSectionModel.value.compDefaultChoise ==
+                      CompDefaultChoise.deduct,
+                  onTap: () => controller.handleCompDefaultChoise(CompDefaultChoise.deduct),
                 ),
               ),
               const CustomDivider(),
               Obx(
                 () => SettingsSelectOption(
-                  disabled: controller.compDeductionMode.value != 'choose',
+                  disabled:
+                      controller.compTicketsSectionModel.value.compDeductionMode !=
+                      CompDeductionMode.choose,
                   label: 'not_deduct_from',
-                  isSelected: controller.compDefaultChoise.value == 'notDeduct',
-                  onTap: () => controller.handleCompDefaultChoise('notDeduct'),
+                  isSelected:
+                      controller.compTicketsSectionModel.value.compDefaultChoise ==
+                      CompDefaultChoise.notDeduct,
+                  onTap: () => controller.handleCompDefaultChoise(CompDefaultChoise.notDeduct),
                 ),
               ),
             ],

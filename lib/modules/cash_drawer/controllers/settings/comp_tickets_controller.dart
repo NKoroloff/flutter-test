@@ -1,14 +1,16 @@
 import 'package:get/get.dart';
+import 'package:purplepass_test_task/modules/cash_drawer/models/comp_tickets_section_model.dart';
 
 class CompTicketsController extends GetxController {
-  final RxString compDeductionMode = 'always'.obs;
-  final RxString compDefaultChoise = 'deduct'.obs;
+  var compTicketsSectionModel = CompTicketsSectionModel.initial().obs;
 
-  void handleCompDeductionMode(String value) {
-    compDeductionMode.value = value;
+  void handleCompDeductionMode(CompDeductionMode value) {
+    compTicketsSectionModel.value.compDeductionMode = value;
+    compTicketsSectionModel.refresh();
   }
 
-  void handleCompDefaultChoise(String value) {
-    compDefaultChoise.value = value;
+  void handleCompDefaultChoise(CompDefaultChoise value) {
+    compTicketsSectionModel.value.compDefaultChoise = value;
+    compTicketsSectionModel.refresh();
   }
 }
