@@ -30,16 +30,17 @@ class RemainTicketsSection extends StatelessWidget {
               Obx(
                 () => SettingsSelectOption(
                   label: 'when_less_than25',
-                  isSelected: controller.showRemainingTicketsMode == 'lessThan25',
-                  onTap: () => controller.handleRemainTickets('lessThan25'),
+                  isSelected:
+                      controller.showRemainingTicketsMode == RemainingTicketsMode.lessThan25,
+                  onTap: () => controller.handleRemainTickets(RemainingTicketsMode.lessThan25),
                 ),
               ),
               const CustomDivider(),
               Obx(
                 () => SettingsSelectOption(
                   label: 'always',
-                  isSelected: controller.showRemainingTicketsMode == 'always',
-                  onTap: () => controller.handleRemainTickets('always'),
+                  isSelected: controller.showRemainingTicketsMode == RemainingTicketsMode.always,
+                  onTap: () => controller.handleRemainTickets(RemainingTicketsMode.always),
                 ),
               ),
             ],

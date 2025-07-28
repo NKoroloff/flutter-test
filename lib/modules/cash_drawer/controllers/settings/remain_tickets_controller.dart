@@ -1,9 +1,11 @@
 import 'package:get/get.dart';
 
-class RemainTicketsController extends GetxController {
-  final RxString showRemainingTicketsMode = 'always'.obs;
+enum RemainingTicketsMode { always, lessThan25 }
 
-  void handleRemainTickets(String value) {
+class RemainTicketsController extends GetxController {
+  final Rx<RemainingTicketsMode> showRemainingTicketsMode = RemainingTicketsMode.always.obs;
+
+  void handleRemainTickets(RemainingTicketsMode value) {
     showRemainingTicketsMode.value = value;
   }
 }
