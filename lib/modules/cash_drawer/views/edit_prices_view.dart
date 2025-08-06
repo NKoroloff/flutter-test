@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:get/utils.dart';
+import 'package:get/get.dart';
+import 'package:purplepass_test_task/modules/cash_drawer/controllers/price_controller.dart';
+import 'package:purplepass_test_task/modules/cash_drawer/models/price_colors_model.dart';
 import 'package:purplepass_test_task/modules/cash_drawer/views/settings/settings_imports.dart';
 import 'package:purplepass_test_task/modules/cash_drawer/views/settings/widgets/custom_divider.dart';
 import 'package:purplepass_test_task/modules/cash_drawer/views/settings/widgets/custom_input.dart';
@@ -10,6 +12,7 @@ class EditPricesView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var controller = Get.find<PriceController>();
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.grey[200],
@@ -85,8 +88,20 @@ class EditPricesView extends StatelessWidget {
                       children: [
                         Text('color'.tr),
                         Spacer(),
-                        Text('default'.tr),
-                        SizedBox(width: 20),
+                        Obx(() {
+                          // final selected = controller.prices[0].priceColor;
+                          return DropdownButton<PriceColor>(
+                            value: controller.defaultColors[1],
+                            onChanged: (value) {},
+                            items: controller.defaultColors.map((priceColor) {
+                              return DropdownMenuItem<PriceColor>(
+                                value: priceColor,
+                                child: Row(children: [Text(priceColor.name)]),
+                              );
+                            }).toList(),
+                          );
+                        }),
+                        SizedBox(width: 10),
                       ],
                     ),
                     CustomDivider(),

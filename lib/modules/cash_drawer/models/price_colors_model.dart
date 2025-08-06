@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class PriceColor {
-  int id;
+  String id;
   String name;
   Color color;
 
