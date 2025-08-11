@@ -80,8 +80,9 @@ class PriceController extends GetxController {
     prices.refresh();
   }
 
-  void changePriority(int index, int step) {
-    prices[index].priority += step;
+  void changePriority(int index, int step, {int min = 0, int max = 10}) {
+    final newPriority = (prices[index].priority + step).clamp(min, max);
+    prices[index].priority = newPriority;
     prices.refresh();
   }
 
