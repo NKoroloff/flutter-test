@@ -8,12 +8,12 @@ class SettingsNumberInput extends StatelessWidget {
     super.key,
   });
   final int value;
-  final void Function() onIncrement;
-  final void Function() onDecrement;
+  final void Function()? onIncrement;
+  final void Function()? onDecrement;
 
   @override
   Widget build(BuildContext context) {
-    Widget _buildIconButton(Color color, IconData icon, VoidCallback onPressed) {
+    Widget _buildIconButton(Color color, IconData icon, VoidCallback? onPressed) {
       return SizedBox(
         height: 30,
         width: 30,

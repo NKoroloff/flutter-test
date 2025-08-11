@@ -27,9 +27,18 @@ class EditPricesView extends StatelessWidget {
 
         child: Column(
           spacing: 10,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            OutlinedButton(onPressed: () {}, child: Text('select_seats'.tr)),
-
+            Row(
+              children: [
+                OutlinedButton(onPressed: () {}, child: Text('assing_color'.tr)),
+                SizedBox(width: 20),
+                OutlinedButton(onPressed: () {}, child: Text('change_visibility'.tr)),
+              ],
+            ),
+            SizedBox(height: 10),
+            Text('click_price_below_to_edit'),
+            SizedBox(height: 10),
             Expanded(
               child: GridView.builder(
                 itemCount: controller.prices.length,
@@ -69,8 +78,6 @@ class EditPricesView extends StatelessWidget {
                 },
               ),
             ),
-
-            OutlinedButton(onPressed: () {}, child: Text('cancel'.tr)),
           ],
         ),
       ),
