@@ -5,6 +5,7 @@ import 'package:purplepass_test_task/modules/cash_drawer/bindings/select_seats_b
 import 'package:purplepass_test_task/modules/cash_drawer/bindings/settings_binding.dart';
 import 'package:purplepass_test_task/modules/cash_drawer/views/credit_card_input_view.dart';
 import 'package:purplepass_test_task/modules/cash_drawer/views/cash_drawer_view.dart';
+import 'package:purplepass_test_task/modules/cash_drawer/views/edit_price_view.dart';
 import 'package:purplepass_test_task/modules/cash_drawer/views/edit_prices_view.dart';
 import 'package:purplepass_test_task/modules/cash_drawer/views/select_seats_view.dart';
 import 'package:purplepass_test_task/modules/cash_drawer/views/settings/settings_view.dart';
@@ -27,7 +28,12 @@ class AppPages {
       page: () => const SettingsView(),
       binding: SettingsBinding(),
     ),
-    GetPage<EditPricesView>(
+    GetPage<EditPriceView>(
+      name: _Paths.editPrice,
+      page: () => const EditPriceView(),
+      binding: EditPricesBinding(),
+    ),
+    GetPage<EditPriceView>(
       name: _Paths.editPrices,
       page: () => const EditPricesView(),
       binding: EditPricesBinding(),

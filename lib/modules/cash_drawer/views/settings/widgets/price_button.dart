@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:purplepass_test_task/modules/cash_drawer/models/custom_price.dart';
 import 'package:purplepass_test_task/modules/cash_drawer/models/price_model.dart';
 
 bool isDark(Color color) {
@@ -13,6 +14,7 @@ class PriceButton extends StatelessWidget {
     required this.onTap,
     required this.name,
     required this.price,
+    required this.customPrice,
     this.infoBackgroundColor = const Color.fromARGB(255, 202, 202, 202),
     this.disabled = false,
     this.info,
@@ -20,6 +22,7 @@ class PriceButton extends StatelessWidget {
   });
   final PriceButtonVariant variant;
   final Color infoBackgroundColor;
+  final CustomPrice customPrice;
   final VoidCallback onTap;
   final bool disabled;
   final String name;
@@ -49,6 +52,8 @@ class PriceButton extends StatelessWidget {
         ? Colors.grey.shade600
         : (isDark(infoBg) ? Colors.white : Colors.black);
 
+    final priceValue = customPrice.isActive ? customPrice.value : price;
+
     return Material(
       borderRadius: BorderRadius.circular(borderRadius),
       color: backgroundColor,
@@ -77,7 +82,7 @@ class PriceButton extends StatelessWidget {
                       overflow: TextOverflow.ellipsis,
                     ),
                     Text(
-                      price.toString(),
+                      '${priceValue.toString()} \$',
                       style: TextStyle(color: textColor),
                       overflow: TextOverflow.ellipsis,
                     ),

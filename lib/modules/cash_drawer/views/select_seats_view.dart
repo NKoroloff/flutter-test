@@ -47,6 +47,7 @@ class SelectSeatsView extends StatelessWidget {
                   // final infoBg = item is AsePrice ? item.infoBackgroundColor : null;
 
                   return PriceButton(
+                    customPrice: item.customPrice,
                     variant: item.variant,
                     onTap: () {
                       Get.toNamed('/mvc/edit-prices/$index');
