@@ -1,22 +1,34 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:flutter/material.dart';
+import 'package:purplepass_test_task/modules/cash_drawer/models/custom_price.dart';
 import 'package:purplepass_test_task/modules/cash_drawer/models/price_colors_model.dart';
 import 'package:purplepass_test_task/modules/cash_drawer/models/price_model.dart';
 
 class AsePrice extends Price {
-  PriceColor priceColor;
-  int quantity;
-  int id;
-  String name;
-  String rowName;
-  String seatName;
-  String section;
+  final String? info;
+  final Color? infoBackgroundColor;
   AsePrice({
-    required this.priceColor,
-    required this.quantity,
-    required this.id,
-    required this.name,
-    required this.rowName,
-    required this.seatName,
-    required this.section,
-  }) : super(priceColor: priceColor, quantity: quantity, id: id, name: name, type: PriceType.ase);
+    required CustomPrice customPrice,
+    required PriceColor priceColor,
+    required int quantity,
+    required double price,
+    required int id,
+    required String name,
+    this.info,
+    this.infoBackgroundColor,
+    PriceButtonVariant variant = PriceButtonVariant.outlined,
+    bool disabled = false,
+    VoidCallback? onTap,
+  }) : super(
+         customPrice: customPrice,
+         priceColor: priceColor,
+         quantity: quantity,
+         id: id,
+         price: price,
+         name: name,
+         type: PriceType.ase,
+         variant: variant,
+         disabled: disabled,
+         onTap: onTap,
+       );
 }

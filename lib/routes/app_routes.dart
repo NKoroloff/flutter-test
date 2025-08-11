@@ -14,7 +14,7 @@ abstract class _Paths {
   _Paths._();
   static const cashDrawer = '/mvc/cash-drawer';
   static const settings = '/mvc/settings';
-  static const editPrices = '/mvc/edit-prices';
+  static const editPrices = '/mvc/edit-prices/:index';
   static const selectSeats = '/mvc/select-seats';
   static const cardInput = '/mvc/card-input';
 }

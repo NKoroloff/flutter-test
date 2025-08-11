@@ -1,29 +1,29 @@
 import 'package:flutter/material.dart';
-import 'package:purplepass_test_task/modules/cash_drawer/models/inventory_button_model.dart';
+import 'package:purplepass_test_task/modules/cash_drawer/models/price_model.dart';
 
 bool isDark(Color color) {
   final luminance = color.computeLuminance();
   return luminance < 0.5;
 }
 
-class InventoryButton extends StatelessWidget {
-  const InventoryButton({
+class PriceButton extends StatelessWidget {
+  const PriceButton({
     required this.variant,
     required this.color,
     required this.onTap,
-    required this.label,
+    required this.name,
     required this.price,
     this.infoBackgroundColor = const Color.fromARGB(255, 202, 202, 202),
     this.disabled = false,
     this.info,
     super.key,
   });
-  final InventoryButtonVariant variant;
+  final PriceButtonVariant variant;
   final Color infoBackgroundColor;
-  final void Function() onTap;
+  final VoidCallback onTap;
   final bool disabled;
-  final String label;
-  final String price;
+  final String name;
+  final double price;
   final String? info;
   final Color color;
 
@@ -33,17 +33,15 @@ class InventoryButton extends StatelessWidget {
 
     final backgroundColor = disabled
         ? Colors.transparent
-        : (variant == InventoryButtonVariant.filled ? color : Colors.transparent);
+        : (variant == PriceButtonVariant.filled ? color : Colors.transparent);
 
     final borderColor = disabled
         ? Border.all(color: Colors.grey.shade300)
-        : Border.all(
-            color: variant == InventoryButtonVariant.outlined ? color : Colors.transparent,
-          );
+        : Border.all(color: variant == PriceButtonVariant.outlined ? color : Colors.transparent);
 
     final textColor = disabled
         ? Colors.grey.shade600
-        : (variant == InventoryButtonVariant.filled ? Colors.white : color);
+        : (variant == PriceButtonVariant.filled ? Colors.white : color);
 
     final infoBg = disabled ? Colors.grey.shade300 : infoBackgroundColor;
 
@@ -74,12 +72,12 @@ class InventoryButton extends StatelessWidget {
                 child: Column(
                   children: [
                     Text(
-                      label,
+                      name,
                       style: TextStyle(color: textColor),
                       overflow: TextOverflow.ellipsis,
                     ),
                     Text(
-                      price,
+                      price.toString(),
                       style: TextStyle(color: textColor),
                       overflow: TextOverflow.ellipsis,
                     ),

@@ -1,37 +1,72 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:purplepass_test_task/modules/cash_drawer/models/ase_price_model.dart';
+import 'package:purplepass_test_task/modules/cash_drawer/models/custom_price.dart';
 import 'package:purplepass_test_task/modules/cash_drawer/models/general_price_model.dart';
 import 'package:purplepass_test_task/modules/cash_drawer/models/price_colors_model.dart';
 import 'package:purplepass_test_task/modules/cash_drawer/models/price_model.dart';
 
 class PriceController extends GetxController {
-  var prices = <Price>[
-    AsePrice(
-      priceColor: PriceColor(color: Colors.blue, name: 'Blue', id: 'blue3'),
-      rowName: '1',
-      seatName: '2',
-      section: 'vip',
-      quantity: 2,
-      id: 1,
-      name: '',
-    ),
-    GeneralPrice(
-      quantity: 2,
-      priceColor: PriceColor(color: Colors.blue, name: 'Blue', id: 'blue3'),
-      id: 2,
-      name: 'name',
-    ),
-  ].obs;
-
-  var defaultColors = <PriceColor>[
+  final defaultColors = <PriceColor>[
     PriceColor(color: Colors.red, name: 'Red', id: 'red1'),
     PriceColor(color: Colors.green, name: 'Green', id: 'green2'),
     PriceColor(color: Colors.blue, name: 'Blue', id: 'blue3'),
+    PriceColor(color: Colors.orange, name: 'Orange', id: 'orange4'),
   ];
+
+  late final RxList<Price> prices = _initializePrices();
+
+  RxList<Price> _initializePrices() {
+    return <Price>[
+      AsePrice(
+        priceColor: defaultColors[0],
+        quantity: 2,
+        id: 1,
+        name: 'AsePrice1',
+        price: 33,
+        info: 'Info',
+        customPrice: CustomPrice(value: '0', quantity: 0),
+      ),
+      GeneralPrice(
+        quantity: 2,
+        priceColor: defaultColors[1],
+        id: 2,
+        name: 'GeneralPrice1',
+        price: 22,
+        customPrice: CustomPrice(value: '0', quantity: 0),
+      ),
+      AsePrice(
+        priceColor: defaultColors[2],
+        quantity: 2,
+        id: 3,
+        name: 'AsePrice2',
+        price: 33,
+        info: 'Info',
+        customPrice: CustomPrice(value: '0', quantity: 0),
+      ),
+      GeneralPrice(
+        quantity: 2,
+        priceColor: defaultColors[3],
+        id: 4,
+        name: 'GeneralPrice2',
+        price: 22,
+        customPrice: CustomPrice(value: '0', quantity: 0),
+      ),
+    ].obs;
+  }
 
   void handleNameChange(int index, String value) {
     prices[index].name = value;
+    prices.refresh();
+  }
+
+  void handleChangePrice(int index, double value) {
+    prices[index].price = value;
+    prices.refresh();
+  }
+
+  void handleChangeQuantity(int index, int value) {
+    prices[index].quantity = value;
     prices.refresh();
   }
 

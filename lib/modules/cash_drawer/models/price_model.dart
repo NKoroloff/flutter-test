@@ -1,19 +1,35 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:flutter/material.dart';
+import 'package:purplepass_test_task/modules/cash_drawer/models/custom_price.dart';
+
 import 'package:purplepass_test_task/modules/cash_drawer/models/price_colors_model.dart';
 
 enum PriceType { general, ase }
 
+enum PriceButtonVariant { outlined, filled }
+
 abstract class Price {
-  int quantity;
+  PriceButtonVariant variant;
   PriceColor priceColor;
-  int id;
-  String name;
   PriceType type;
+  bool disabled;
+  int quantity;
+  double price;
+  String name;
+  int id;
+  VoidCallback? onTap;
+  CustomPrice customPrice;
   Price({
     required this.priceColor,
+    required this.customPrice,
     required this.quantity,
-    required this.id,
+    required this.variant,
+    required this.price,
     required this.name,
     required this.type,
+    required this.id,
+    this.disabled = false,
+    this.onTap,
   });
 
   @override

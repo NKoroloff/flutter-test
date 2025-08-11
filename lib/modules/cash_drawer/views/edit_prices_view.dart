@@ -13,6 +13,8 @@ class EditPricesView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var controller = Get.find<PriceController>();
+    final priceIndex = int.parse(Get.parameters['index']!);
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.grey[200],
@@ -37,7 +39,11 @@ class EditPricesView extends StatelessWidget {
                   spacing: 20,
                   children: [
                     Expanded(
-                      child: CustomInput(label: 'Name', value: '', onChanged: (value) {}),
+                      child: CustomInput(
+                        label: 'Name',
+                        value: controller.prices[priceIndex].name,
+                        onChanged: (value) => controller.handleNameChange(priceIndex, value),
+                      ),
                     ),
                   ],
                 ),
@@ -58,7 +64,11 @@ class EditPricesView extends StatelessWidget {
                         SizedBox(width: 20),
 
                         Expanded(
-                          child: CustomInput(label: 'price', onChanged: (value) {}, value: ''),
+                          child: CustomInput(
+                            label: 'price',
+                            onChanged: (value) {},
+                            value: controller.prices[priceIndex].price.toString(),
+                          ),
                         ),
                       ],
                     ),
@@ -71,7 +81,7 @@ class EditPricesView extends StatelessWidget {
                           child: CustomInput(
                             label: 'quantity_available',
                             onChanged: (value) {},
-                            value: '',
+                            value: controller.prices[priceIndex].quantity.toString(),
                           ),
                         ),
                       ],
@@ -88,19 +98,34 @@ class EditPricesView extends StatelessWidget {
                       children: [
                         Text('color'.tr),
                         Spacer(),
-                        Obx(() {
-                          // final selected = controller.prices[0].priceColor;
-                          return DropdownButton<PriceColor>(
-                            value: controller.defaultColors[1],
-                            onChanged: (value) {},
+
+                        Obx(
+                          () => DropdownButton<PriceColor>(
+                            value: controller.prices[priceIndex].priceColor,
+                            onChanged: (value) {
+                              controller.handlePriceColor(priceIndex, value!);
+                            },
                             items: controller.defaultColors.map((priceColor) {
                               return DropdownMenuItem<PriceColor>(
                                 value: priceColor,
-                                child: Row(children: [Text(priceColor.name)]),
+                                child: Row(
+                                  children: [
+                                    Container(
+                                      width: 20,
+                                      height: 20,
+                                      decoration: BoxDecoration(
+                                        color: priceColor.color,
+                                        shape: BoxShape.circle,
+                                        border: Border.all(color: priceColor.color),
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               );
                             }).toList(),
-                          );
-                        }),
+                          ),
+                        ),
+
                         SizedBox(width: 10),
                       ],
                     ),

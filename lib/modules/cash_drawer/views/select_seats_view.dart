@@ -1,39 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:get/utils.dart';
-import 'package:purplepass_test_task/modules/cash_drawer/models/inventory_button_model.dart';
-import 'package:purplepass_test_task/modules/cash_drawer/views/settings/widgets/inventory_button.dart';
+import 'package:get/get.dart';
+import 'package:purplepass_test_task/modules/cash_drawer/controllers/price_controller.dart';
+import 'package:purplepass_test_task/modules/cash_drawer/models/ase_price_model.dart';
+import 'package:purplepass_test_task/modules/cash_drawer/views/settings/widgets/price_button.dart';
 
 class SelectSeatsView extends StatelessWidget {
   const SelectSeatsView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final items = [
-      InventoryItem(
-        variant: InventoryButtonVariant.outlined,
-        onTap: () {},
-        label: 'label',
-        price: '144',
-        info: 'info',
-        color: Colors.green,
-      ),
-      InventoryItem(
-        variant: InventoryButtonVariant.filled,
-        onTap: () {},
-        label: 'label',
-        price: '144',
-        color: Colors.orange,
-      ),
-      InventoryItem(
-        variant: InventoryButtonVariant.outlined,
-        onTap: () {},
-        label: 'label',
-        price: '144',
-        info: 'info',
-        color: Colors.red,
-        infoBackgroundColor: Colors.black,
-      ),
-    ];
+    var controller = Get.find<PriceController>();
 
     return Scaffold(
       appBar: AppBar(
@@ -57,7 +33,7 @@ class SelectSeatsView extends StatelessWidget {
 
             Expanded(
               child: GridView.builder(
-                itemCount: items.length,
+                itemCount: controller.prices.length,
                 padding: const EdgeInsets.only(bottom: 8),
                 gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
                   maxCrossAxisExtent: 200,
@@ -66,14 +42,19 @@ class SelectSeatsView extends StatelessWidget {
                   mainAxisExtent: 79,
                 ),
                 itemBuilder: (context, index) {
-                  final item = items[index];
-                  return InventoryButton(
+                  final item = controller.prices[index];
+                  final info = item is AsePrice ? item.info : null;
+                  // final infoBg = item is AsePrice ? item.infoBackgroundColor : null;
+
+                  return PriceButton(
                     variant: item.variant,
-                    onTap: item.onTap,
-                    label: item.label,
+                    onTap: () {
+                      Get.toNamed('/mvc/edit-prices/$index');
+                    },
+                    name: item.name,
                     price: item.price,
-                    info: item.info,
-                    color: item.color,
+                    info: info,
+                    color: item.priceColor.color,
                   );
                 },
               ),

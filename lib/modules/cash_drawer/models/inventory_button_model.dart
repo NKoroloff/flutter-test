@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-enum InventoryButtonVariant { outlined, filled }
+enum PriceButtonVariant { outlined, filled }
 
 class InventoryItem {
-  final InventoryButtonVariant variant;
+  final PriceButtonVariant variant;
   final Color color;
   final VoidCallback onTap;
   final String label;
