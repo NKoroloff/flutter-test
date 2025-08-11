@@ -52,10 +52,14 @@ class EditPricesView extends StatelessWidget {
                 child: Column(
                   spacing: 10,
                   children: [
-                    CustomLabeledSwitch(
-                      value: true,
-                      onChanged: (value) {},
-                      label: 'custom_price_qty',
+                    Obx(
+                      () => CustomLabeledSwitch(
+                        value: controller.prices[priceIndex].customPrice.isActive,
+                        onChanged: (value) {
+                          controller.handleCustomPriceActive(priceIndex, value);
+                        },
+                        label: 'custom_price_qty',
+                      ),
                     ),
                     CustomDivider(),
                     Row(
@@ -64,10 +68,15 @@ class EditPricesView extends StatelessWidget {
                         SizedBox(width: 20),
 
                         Expanded(
-                          child: CustomInput(
-                            label: 'price',
-                            onChanged: (value) {},
-                            value: controller.prices[priceIndex].price.toString(),
+                          child: Obx(
+                            () => CustomInput(
+                              disabled: !controller.prices[priceIndex].customPrice.isActive,
+                              label: 'price',
+                              onChanged: (value) {
+                                controller.handleCustomPriceValue(priceIndex, value);
+                              },
+                              value: controller.prices[priceIndex].customPrice.value,
+                            ),
                           ),
                         ),
                       ],
@@ -78,10 +87,15 @@ class EditPricesView extends StatelessWidget {
                       children: [
                         SizedBox(width: 20),
                         Expanded(
-                          child: CustomInput(
-                            label: 'quantity_available',
-                            onChanged: (value) {},
-                            value: controller.prices[priceIndex].quantity.toString(),
+                          child: Obx(
+                            () => CustomInput(
+                              disabled: !controller.prices[priceIndex].customPrice.isActive,
+                              label: 'quantity_available',
+                              onChanged: (value) {
+                                controller.handleCustomPriceQuantity(priceIndex, value);
+                              },
+                              value: controller.prices[priceIndex].customPrice.quantity.toString(),
+                            ),
                           ),
                         ),
                       ],
@@ -130,10 +144,14 @@ class EditPricesView extends StatelessWidget {
                       ],
                     ),
                     CustomDivider(),
-                    CustomLabeledSwitch(
-                      value: true,
-                      onChanged: (value) {},
-                      label: 'hide_ticket_type',
+                    Obx(
+                      () => CustomLabeledSwitch(
+                        value: controller.prices[priceIndex].hideTicket,
+                        onChanged: (value) {
+                          controller.handleHideTicket(priceIndex, value);
+                        },
+                        label: 'hide_ticket_type',
+                      ),
                     ),
                     CustomDivider(),
                     Row(
@@ -141,7 +159,17 @@ class EditPricesView extends StatelessWidget {
                       children: [
                         Text('priority_high_on_top'.tr),
                         Flexible(
-                          child: SettingsNumberInput(onSubtruct: () {}, onAdd: () {}, value: 0),
+                          child: Obx(
+                            () => SettingsNumberInput(
+                              onDecrement: () {
+                                controller.changePriority(priceIndex, -1);
+                              },
+                              onIncrement: () {
+                                controller.changePriority(priceIndex, 1);
+                              },
+                              value: controller.prices[priceIndex].priority,
+                            ),
+                          ),
                         ),
                       ],
                     ),

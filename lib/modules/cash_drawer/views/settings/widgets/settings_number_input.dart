@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 
 class SettingsNumberInput extends StatelessWidget {
   const SettingsNumberInput({
-    required this.onSubtruct,
-    required this.onAdd,
+    required this.onDecrement,
+    required this.onIncrement,
     required this.value,
     super.key,
   });
-  final double value;
-  final void Function() onAdd;
-  final void Function() onSubtruct;
+  final int value;
+  final void Function() onIncrement;
+  final void Function() onDecrement;
 
   @override
   Widget build(BuildContext context) {
@@ -29,9 +29,9 @@ class SettingsNumberInput extends StatelessWidget {
       children: [
         Text(value.toString()),
         Spacer(),
-        _buildIconButton(Colors.red, Icons.remove, onSubtruct),
+        _buildIconButton(Colors.red, Icons.remove, onDecrement),
         SizedBox(width: 10),
-        _buildIconButton(Colors.green, Icons.add, onAdd),
+        _buildIconButton(Colors.green, Icons.add, onIncrement),
         SizedBox(width: 20),
       ],
     );

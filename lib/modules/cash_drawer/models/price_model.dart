@@ -19,6 +19,8 @@ abstract class Price {
   int id;
   VoidCallback? onTap;
   CustomPrice customPrice;
+  bool hideTicket;
+  int priority;
   Price({
     required this.priceColor,
     required this.customPrice,
@@ -28,7 +30,9 @@ abstract class Price {
     required this.name,
     required this.type,
     required this.id,
+    this.priority = 0,
     this.disabled = false,
+    this.hideTicket = true,
     this.onTap,
   });
 

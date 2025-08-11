@@ -74,4 +74,29 @@ class PriceController extends GetxController {
     prices[index].priceColor = priceColor;
     prices.refresh();
   }
+
+  void handleHideTicket(int index, bool value) {
+    prices[index].hideTicket = value;
+    prices.refresh();
+  }
+
+  void changePriority(int index, int step) {
+    prices[index].priority += step;
+    prices.refresh();
+  }
+
+  void handleCustomPriceActive(int index, bool value) {
+    prices[index].customPrice.isActive = value;
+    prices.refresh();
+  }
+
+  void handleCustomPriceValue(int index, String value) {
+    prices[index].customPrice.value = value;
+    prices.refresh();
+  }
+
+  void handleCustomPriceQuantity(int index, String value) {
+    prices[index].customPrice.quantity = int.parse(value);
+    prices.refresh();
+  }
 }

@@ -14,6 +14,8 @@ class GeneralPrice extends Price {
     PriceButtonVariant variant = PriceButtonVariant.filled,
     bool disabled = false,
     VoidCallback? onTap,
+    int priority = 0,
+    bool hideTicket = true,
   }) : super(
          customPrice: customPrice,
          quantity: quantity,
@@ -25,5 +27,7 @@ class GeneralPrice extends Price {
          disabled: disabled,
          onTap: onTap,
          price: price,
+         priority: priority,
+         hideTicket: hideTicket,
        );
 }

@@ -19,6 +19,8 @@ class AsePrice extends Price {
     PriceButtonVariant variant = PriceButtonVariant.outlined,
     bool disabled = false,
     VoidCallback? onTap,
+    int priority = 0,
+    bool hideTicket = true,
   }) : super(
          customPrice: customPrice,
          priceColor: priceColor,
@@ -29,6 +31,8 @@ class AsePrice extends Price {
          type: PriceType.ase,
          variant: variant,
          disabled: disabled,
+         hideTicket: hideTicket,
          onTap: onTap,
+         priority: priority,
        );
 }
