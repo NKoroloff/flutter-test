@@ -67,4 +67,7 @@ Map<String, String> en = {
   'quantity_available': 'Quantity Available',
   'select_seats': 'Select Seats',
   'admit': 'Admit',
+  'click_price_below_to_edit': 'Click price below to edit',
+  'assing_color': 'Assing Color',
+  'change_visibility': 'Change Visibility',
 };

@@ -6,15 +6,26 @@ import 'package:purplepass_test_task/modules/cash_drawer/models/general_price_mo
 import 'package:purplepass_test_task/modules/cash_drawer/models/price_colors_model.dart';
 import 'package:purplepass_test_task/modules/cash_drawer/models/price_model.dart';
 
+enum EditPricesHeaderMode { tools, assignColor, changeVisibility }
+
 class PriceController extends GetxController {
   final defaultColors = <PriceColor>[
     PriceColor(color: Colors.red, name: 'Red', id: 'red1'),
     PriceColor(color: Colors.green, name: 'Green', id: 'green2'),
     PriceColor(color: Colors.blue, name: 'Blue', id: 'blue3'),
     PriceColor(color: Colors.orange, name: 'Orange', id: 'orange4'),
+    PriceColor(color: Colors.purple, name: 'Default', id: 'default5'),
   ];
 
+  final headerMode = EditPricesHeaderMode.tools.obs;
+
+  // final Rx<PriceColor> colorToAssign = Rx<PriceColor>(
+  //   PriceColor(color: Colors.purple, name: 'Default', id: 'default5'),
+  // );
+
   late final RxList<Price> prices = _initializePrices();
+
+  late Rx<PriceColor> colorToAssign = Rx<PriceColor>(defaultColors.first);
 
   RxList<Price> _initializePrices() {
     return <Price>[
