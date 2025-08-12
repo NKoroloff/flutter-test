@@ -13,7 +13,8 @@ class EditPriceView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var controller = Get.find<PriceController>();
-    final priceIndex = int.parse(Get.parameters['index']!);
+    final indexParam = Get.parameters['index'];
+    final priceIndex = int.tryParse(indexParam ?? '') ?? 1;
 
     return Scaffold(
       appBar: AppBar(

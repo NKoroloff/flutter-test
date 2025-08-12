@@ -31,9 +31,7 @@ class EditPricesView extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             EditPricesHeader(),
-            SizedBox(height: 10),
-            Text('click_price_below_to_edit'.tr),
-            SizedBox(height: 10),
+
             Expanded(
               child: Obx(
                 () => GridView.builder(
@@ -66,6 +64,8 @@ class EditPricesView extends StatelessWidget {
                       onTap: () {
                         if (controller.headerMode == EditPricesHeaderMode.assignColor) {
                           controller.handlePriceColor(index, controller.colorToAssign.value);
+                        } else if (controller.headerMode == EditPricesHeaderMode.changeVisibility) {
+                          controller.handleHideTicket(index, !controller.prices[index].hideTicket);
                         } else {
                           Get.toNamed('/mvc/edit-prices/$index');
                         }

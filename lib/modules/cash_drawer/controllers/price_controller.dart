@@ -19,10 +19,6 @@ class PriceController extends GetxController {
 
   final headerMode = EditPricesHeaderMode.tools.obs;
 
-  // final Rx<PriceColor> colorToAssign = Rx<PriceColor>(
-  //   PriceColor(color: Colors.purple, name: 'Default', id: 'default5'),
-  // );
-
   late final RxList<Price> prices = _initializePrices();
 
   late Rx<PriceColor> colorToAssign = Rx<PriceColor>(defaultColors.first);
@@ -109,6 +105,20 @@ class PriceController extends GetxController {
 
   void handleCustomPriceQuantity(int index, String value) {
     prices[index].customPrice.quantity = int.parse(value);
+    prices.refresh();
+  }
+
+  void hideAllPrices() {
+    for (final p in prices) {
+      p.hideTicket = true;
+    }
+    prices.refresh();
+  }
+
+  void showAllPrices() {
+    for (final p in prices) {
+      p.hideTicket = false;
+    }
     prices.refresh();
   }
 }
