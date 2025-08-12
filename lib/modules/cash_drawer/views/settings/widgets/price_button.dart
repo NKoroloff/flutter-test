@@ -82,7 +82,7 @@ class PriceButton extends StatelessWidget {
                       overflow: TextOverflow.ellipsis,
                     ),
                     Text(
-                      '${priceValue.toString()} \$',
+                      '\$${priceValue.toString()}',
                       style: TextStyle(color: textColor),
                       overflow: TextOverflow.ellipsis,
                     ),

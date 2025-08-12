@@ -18,6 +18,7 @@ class PriceController extends GetxController {
   ];
 
   final headerMode = EditPricesHeaderMode.tools.obs;
+  RxBool isSortedByColor = false.obs;
 
   late final RxList<Price> prices = _initializePrices();
 
@@ -57,6 +58,22 @@ class PriceController extends GetxController {
         id: 4,
         name: 'GeneralPrice2',
         price: 22,
+        customPrice: CustomPrice(value: '0', quantity: 0),
+      ),
+      GeneralPrice(
+        quantity: 2,
+        priceColor: defaultColors[4],
+        id: 5,
+        name: 'GeneralPrice3',
+        price: 2,
+        customPrice: CustomPrice(value: '0', quantity: 0),
+      ),
+      GeneralPrice(
+        quantity: 2,
+        priceColor: defaultColors[4],
+        id: 6,
+        name: 'GeneralPrice4',
+        price: 29,
         customPrice: CustomPrice(value: '0', quantity: 0),
       ),
     ].obs;
@@ -120,5 +137,14 @@ class PriceController extends GetxController {
       p.hideTicket = false;
     }
     prices.refresh();
+  }
+
+  void handleSortByColor(value) {
+    isSortedByColor.value = value;
+    if (value) {
+      prices.sort((a, b) => a.priceColor.name.compareTo(b.priceColor.name));
+    } else {
+      prices.sort((a, b) => a.id.compareTo(b.id));
+    }
   }
 }

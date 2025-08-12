@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:purplepass_test_task/modules/cash_drawer/controllers/price_controller.dart';
 import 'package:purplepass_test_task/modules/cash_drawer/models/price_colors_model.dart';
+import 'package:purplepass_test_task/modules/cash_drawer/views/settings/widgets/custom_labeled_switch.dart';
 
 class EditPricesHeader extends StatelessWidget {
   const EditPricesHeader({super.key});
@@ -12,9 +13,11 @@ class EditPricesHeader extends StatelessWidget {
 
     Widget _toolsHeader() {
       return Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         spacing: 10,
         children: [
           Row(
+            spacing: 10,
             children: [
               OutlinedButton(
                 onPressed: () {
@@ -22,12 +25,21 @@ class EditPricesHeader extends StatelessWidget {
                 },
                 child: Text('assing_color'.tr),
               ),
-              SizedBox(width: 10),
               OutlinedButton(
                 onPressed: () {
                   controller.headerMode.value = EditPricesHeaderMode.changeVisibility;
                 },
                 child: Text('change_visibility'.tr),
+              ),
+              SizedBox(
+                width: 170,
+                child: Obx(
+                  () => CustomLabeledSwitch(
+                    onChanged: controller.handleSortByColor,
+                    label: 'sort_by_color',
+                    value: controller.isSortedByColor.value,
+                  ),
+                ),
               ),
             ],
           ),
@@ -39,6 +51,7 @@ class EditPricesHeader extends StatelessWidget {
 
     Widget _assignColorHeader() {
       return Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         spacing: 10,
         children: [
           Row(
@@ -86,6 +99,7 @@ class EditPricesHeader extends StatelessWidget {
 
     Widget _changeVisibilityHeader() {
       return Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         spacing: 10,
         children: [
           Row(

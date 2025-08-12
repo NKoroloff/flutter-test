@@ -70,4 +70,7 @@ Map<String, String> en = {
   'click_price_below_to_edit': 'Click price below to edit',
   'assing_color': 'Assing Color',
   'change_visibility': 'Change Visibility',
+  'sort_by_color': 'Sort by color',
+  'click_price_below_to_assign_color': 'Click price below to assign color',
+  'click_price_below_to_change_visibility': 'Click price below to change visibility',
 };
