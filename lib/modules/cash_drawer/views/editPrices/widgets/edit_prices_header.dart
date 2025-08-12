@@ -14,9 +14,10 @@ class EditPricesHeader extends StatelessWidget {
     Widget _toolsHeader() {
       return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
+
         spacing: 10,
         children: [
-          Row(
+          Wrap(
             spacing: 10,
             children: [
               OutlinedButton(
