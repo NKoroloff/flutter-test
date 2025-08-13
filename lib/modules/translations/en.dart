@@ -73,4 +73,5 @@ Map<String, String> en = {
   'sort_by_color': 'Sort by color',
   'click_price_below_to_assign_color': 'Click price below to assign color',
   'click_price_below_to_change_visibility': 'Click price below to change visibility',
+  'add_ticket_type': 'Add ticket type',
 };

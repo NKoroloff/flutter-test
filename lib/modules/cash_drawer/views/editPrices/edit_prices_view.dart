@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:purplepass_test_task/modules/cash_drawer/controllers/price_controller.dart';
+import 'package:purplepass_test_task/modules/cash_drawer/models/custom_price.dart';
+import 'package:purplepass_test_task/modules/cash_drawer/models/general_price_model.dart';
 import 'package:purplepass_test_task/modules/cash_drawer/views/editPrices/widgets/edit_prices_header.dart';
 import 'package:purplepass_test_task/modules/cash_drawer/views/settings/widgets/price_button.dart';
 
@@ -11,6 +13,24 @@ class EditPricesView extends StatelessWidget {
   Widget build(BuildContext context) {
     var controller = Get.find<PriceController>();
 
+    void createNewPrice() {
+      var newId = controller.prices.length;
+      controller.prices.add(
+        GeneralPrice(
+          customPrice: CustomPrice(value: '0', quantity: 0, isActive: true),
+          priceColor: controller.defaultColors[0],
+          quantity: 0,
+          price: 0,
+          id: newId,
+          name: 'New Ticket',
+          hideTicket: false,
+        ),
+      );
+      Get.toNamed('/mvc/edit-prices/$newId');
+    }
+
+    ;
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.grey[200],
@@ -20,6 +40,10 @@ class EditPricesView extends StatelessWidget {
           label: const Text('Back'),
           icon: const Icon(Icons.arrow_back_ios),
         ),
+        actions: [
+          OutlinedButton(onPressed: createNewPrice, child: Text('add_ticket_type'.tr)),
+          SizedBox(width: 20),
+        ],
         title: Text('edit_prices'.tr, style: const TextStyle(fontWeight: FontWeight.w600)),
       ),
       backgroundColor: const Color.fromARGB(128, 241, 241, 241),

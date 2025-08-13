@@ -15,7 +15,7 @@ class GeneralPrice extends Price {
     bool disabled = false,
     VoidCallback? onTap,
     int priority = 0,
-    bool hideTicket = true,
+    bool hideTicket = false,
   }) : super(
          customPrice: customPrice,
          quantity: quantity,

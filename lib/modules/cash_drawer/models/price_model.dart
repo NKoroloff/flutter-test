@@ -32,7 +32,7 @@ abstract class Price {
     required this.id,
     this.priority = 0,
     this.disabled = false,
-    this.hideTicket = true,
+    this.hideTicket = false,
     this.onTap,
   });
 
