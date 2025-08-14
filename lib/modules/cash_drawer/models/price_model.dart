@@ -1,7 +1,6 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
-import 'package:purplepass_test_task/modules/cash_drawer/models/custom_price.dart';
 
+import 'package:purplepass_test_task/modules/cash_drawer/models/custom_price.dart';
 import 'package:purplepass_test_task/modules/cash_drawer/models/price_colors_model.dart';
 
 enum PriceType { general, ase }
@@ -38,4 +37,6 @@ abstract class Price {
 
   @override
   String toString() => 'Price(quantity: $quantity, id: $id, name: $name)';
+
+  Price clone();
 }

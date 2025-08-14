@@ -30,4 +30,21 @@ class GeneralPrice extends Price {
          priority: priority,
          hideTicket: hideTicket,
        );
+
+  @override
+  GeneralPrice clone() {
+    return GeneralPrice(
+      customPrice: customPrice.clone(),
+      quantity: quantity,
+      priceColor: priceColor,
+      id: id,
+      name: name,
+      variant: variant,
+      disabled: disabled,
+      onTap: onTap,
+      price: price,
+      priority: priority,
+      hideTicket: hideTicket,
+    );
+  }
 }

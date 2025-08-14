@@ -20,6 +20,9 @@ class PriceController extends GetxController {
   final headerMode = EditPricesHeaderMode.tools.obs;
   RxBool isSortedByColor = false.obs;
 
+  Rx<Price?> temporaryPrice = Rx<Price?>(null);
+  int? editingPriceIndex = null;
+
   late final RxList<Price> prices = _initializePrices();
 
   late Rx<PriceColor> colorToAssign = Rx<PriceColor>(defaultColors.first);
@@ -79,50 +82,83 @@ class PriceController extends GetxController {
     ].obs;
   }
 
-  void handleNameChange(int index, String value) {
-    prices[index].name = value;
-    prices.refresh();
+  void startEditPrice(int index) {
+    temporaryPrice.value = prices[index].clone();
+    editingPriceIndex = index;
+    Get.toNamed('/mvc/edit-prices/$index');
   }
 
-  void handleChangePrice(int index, double value) {
-    prices[index].price = value;
-    prices.refresh();
+  void handleNameChange(String value) {
+    if (temporaryPrice.value != null) {
+      temporaryPrice.value!.name = value;
+      temporaryPrice.refresh();
+    }
   }
 
-  void handleChangeQuantity(int index, int value) {
-    prices[index].quantity = value;
-    prices.refresh();
+  void handlePriceColor(PriceColor priceColor) {
+    if (temporaryPrice.value != null) {
+      temporaryPrice.value!.priceColor = priceColor;
+      temporaryPrice.refresh();
+    }
   }
 
-  void handlePriceColor(int index, PriceColor priceColor) {
+  void handlePriceColorByIndex(int index, PriceColor priceColor) {
     prices[index].priceColor = priceColor;
     prices.refresh();
   }
 
-  void handleHideTicket(int index, bool value) {
+  void editHideTicket(bool value) {
+    if (temporaryPrice.value != null) {
+      temporaryPrice.value!.hideTicket = value;
+      temporaryPrice.refresh();
+    }
+  }
+
+  void handleHideTicketByIndex(int index, bool value) {
     prices[index].hideTicket = value;
     prices.refresh();
   }
 
-  void changePriority(int index, int step, {int min = 0, int max = 10}) {
-    final newPriority = (prices[index].priority + step).clamp(min, max);
-    prices[index].priority = newPriority;
-    prices.refresh();
+  void changePriority(int step, {int min = 0, int max = 10}) {
+    if (temporaryPrice.value != null) {
+      final newPriority = (temporaryPrice.value!.priority + step).clamp(min, max);
+      temporaryPrice.value!.priority = newPriority;
+      temporaryPrice.refresh();
+    }
   }
 
-  void handleCustomPriceActive(int index, bool value) {
-    prices[index].customPrice.isActive = value;
-    prices.refresh();
+  void handleCustomPriceActive(bool value) {
+    if (temporaryPrice.value != null) {
+      temporaryPrice.value!.customPrice.isActive = value;
+      temporaryPrice.refresh();
+    }
   }
 
-  void handleCustomPriceValue(int index, String value) {
-    prices[index].customPrice.value = value;
-    prices.refresh();
+  void handleCustomPriceValue(String value) {
+    if (temporaryPrice.value != null) {
+      temporaryPrice.value!.customPrice.value = value;
+      prices.refresh();
+    }
   }
 
-  void handleCustomPriceQuantity(int index, String value) {
-    prices[index].customPrice.quantity = int.parse(value);
-    prices.refresh();
+  void handleCustomPriceQuantity(String value) {
+    if (temporaryPrice.value != null) {
+      temporaryPrice.value!.customPrice.quantity = int.parse(value);
+      prices.refresh();
+    }
+  }
+
+  void saveEditedPrice() {
+    if (temporaryPrice.value != null && editingPriceIndex != null) {
+      prices[editingPriceIndex!] = temporaryPrice.value!;
+      prices.refresh();
+      // editingPrice.value = null;
+      Get.toNamed('/mvc/edit-prices');
+    }
+  }
+
+  void canselSave() {
+    Get.toNamed('/mvc/edit-prices');
   }
 
   void hideAllPrices() {
@@ -146,5 +182,28 @@ class PriceController extends GetxController {
     } else {
       prices.sort((a, b) => a.id.compareTo(b.id));
     }
+  }
+
+  void createNewPrice() {
+    var newId = prices.length;
+    temporaryPrice.value = GeneralPrice(
+      customPrice: CustomPrice(value: '0', quantity: 0, isActive: true),
+      priceColor: defaultColors[0],
+      quantity: 0,
+      price: 0,
+      id: newId,
+      name: 'New Ticket',
+    );
+    Get.toNamed('/mvc/edit-prices/new');
+  }
+
+  void saveNewPrice() {
+    prices.add(temporaryPrice.value!);
+    Get.toNamed('/mvc/edit-prices/');
+  }
+
+  void deletePrice() {
+    prices.removeWhere((price) => price.id == temporaryPrice.value!.id);
+    Get.toNamed('/mvc/edit-prices/');
   }
 }

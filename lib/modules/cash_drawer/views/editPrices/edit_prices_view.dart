@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:purplepass_test_task/modules/cash_drawer/controllers/price_controller.dart';
-import 'package:purplepass_test_task/modules/cash_drawer/models/custom_price.dart';
-import 'package:purplepass_test_task/modules/cash_drawer/models/general_price_model.dart';
 import 'package:purplepass_test_task/modules/cash_drawer/views/editPrices/widgets/edit_prices_header.dart';
 import 'package:purplepass_test_task/modules/cash_drawer/views/settings/widgets/price_button.dart';
 
@@ -12,24 +10,6 @@ class EditPricesView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var controller = Get.find<PriceController>();
-
-    void createNewPrice() {
-      var newId = controller.prices.length;
-      controller.prices.add(
-        GeneralPrice(
-          customPrice: CustomPrice(value: '0', quantity: 0, isActive: true),
-          priceColor: controller.defaultColors[0],
-          quantity: 0,
-          price: 0,
-          id: newId,
-          name: 'New Ticket',
-          hideTicket: false,
-        ),
-      );
-      Get.toNamed('/mvc/edit-prices/$newId');
-    }
-
-    ;
 
     return Scaffold(
       appBar: AppBar(
@@ -41,7 +21,10 @@ class EditPricesView extends StatelessWidget {
           icon: const Icon(Icons.arrow_back_ios),
         ),
         actions: [
-          OutlinedButton(onPressed: createNewPrice, child: Text('add_ticket_type'.tr)),
+          OutlinedButton(
+            onPressed: () => controller.createNewPrice(),
+            child: Text('add_ticket_type'.tr),
+          ),
           SizedBox(width: 20),
         ],
         title: Text('edit_prices'.tr, style: const TextStyle(fontWeight: FontWeight.w600)),
@@ -87,11 +70,14 @@ class EditPricesView extends StatelessWidget {
                       variant: item.variant,
                       onTap: () {
                         if (controller.headerMode == EditPricesHeaderMode.assignColor) {
-                          controller.handlePriceColor(index, controller.colorToAssign.value);
+                          controller.handlePriceColorByIndex(index, controller.colorToAssign.value);
                         } else if (controller.headerMode == EditPricesHeaderMode.changeVisibility) {
-                          controller.handleHideTicket(index, !controller.prices[index].hideTicket);
+                          controller.handleHideTicketByIndex(
+                            index,
+                            !controller.prices[index].hideTicket,
+                          );
                         } else {
-                          Get.toNamed('/mvc/edit-prices/$index');
+                          controller.startEditPrice(index);
                         }
                       },
                       name: item.name,

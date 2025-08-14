@@ -33,6 +33,11 @@ class AppPages {
       page: () => const EditPriceView(),
       binding: EditPricesBinding(),
     ),
+    GetPage<EditPriceView>(
+      name: _Paths.editPriceNew,
+      page: () => const EditPriceView(),
+      binding: EditPricesBinding(),
+    ),
     GetPage<EditPricesView>(
       name: _Paths.editPrices,
       page: () => const EditPricesView(),

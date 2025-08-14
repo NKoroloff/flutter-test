@@ -18,6 +18,7 @@ class EditPricesHeader extends StatelessWidget {
         spacing: 10,
         children: [
           Wrap(
+            crossAxisAlignment: WrapCrossAlignment.center,
             spacing: 10,
             children: [
               OutlinedButton(

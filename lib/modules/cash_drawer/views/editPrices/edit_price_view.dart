@@ -13,9 +13,7 @@ class EditPriceView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var controller = Get.find<PriceController>();
-    final indexParam = Get.parameters['index'];
-    final priceIndex = int.tryParse(indexParam ?? '') ?? 1;
-
+    bool isNew = Get.currentRoute.contains('/new');
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.grey[200],
@@ -42,8 +40,8 @@ class EditPriceView extends StatelessWidget {
                     Expanded(
                       child: CustomInput(
                         label: 'Name',
-                        value: controller.prices[priceIndex].name,
-                        onChanged: (value) => controller.handleNameChange(priceIndex, value),
+                        value: controller.temporaryPrice.value!.name,
+                        onChanged: (value) => controller.handleNameChange(value),
                       ),
                     ),
                   ],
@@ -55,9 +53,9 @@ class EditPriceView extends StatelessWidget {
                   children: [
                     Obx(
                       () => CustomLabeledSwitch(
-                        value: controller.prices[priceIndex].customPrice.isActive,
+                        value: controller.temporaryPrice.value!.customPrice.isActive,
                         onChanged: (value) {
-                          controller.handleCustomPriceActive(priceIndex, value);
+                          controller.handleCustomPriceActive(value);
                         },
                         label: 'custom_price_qty',
                       ),
@@ -71,12 +69,12 @@ class EditPriceView extends StatelessWidget {
                         Expanded(
                           child: Obx(
                             () => CustomInput(
-                              disabled: !controller.prices[priceIndex].customPrice.isActive,
+                              disabled: !controller.temporaryPrice.value!.customPrice.isActive,
                               label: 'price',
                               onChanged: (value) {
-                                controller.handleCustomPriceValue(priceIndex, value);
+                                controller.handleCustomPriceValue(value);
                               },
-                              value: controller.prices[priceIndex].customPrice.value,
+                              value: controller.temporaryPrice.value!.customPrice.value,
                             ),
                           ),
                         ),
@@ -90,12 +88,13 @@ class EditPriceView extends StatelessWidget {
                         Expanded(
                           child: Obx(
                             () => CustomInput(
-                              disabled: !controller.prices[priceIndex].customPrice.isActive,
+                              disabled: !controller.temporaryPrice.value!.customPrice.isActive,
                               label: 'quantity_available',
                               onChanged: (value) {
-                                controller.handleCustomPriceQuantity(priceIndex, value);
+                                controller.handleCustomPriceQuantity(value);
                               },
-                              value: controller.prices[priceIndex].customPrice.quantity.toString(),
+                              value: controller.temporaryPrice.value!.customPrice.quantity
+                                  .toString(),
                             ),
                           ),
                         ),
@@ -116,9 +115,9 @@ class EditPriceView extends StatelessWidget {
 
                         Obx(
                           () => DropdownButton<PriceColor>(
-                            value: controller.prices[priceIndex].priceColor,
+                            value: controller.temporaryPrice.value!.priceColor,
                             onChanged: (value) {
-                              controller.handlePriceColor(priceIndex, value!);
+                              controller.handlePriceColor(value!);
                             },
                             items: controller.defaultColors.map((priceColor) {
                               return DropdownMenuItem<PriceColor>(
@@ -147,9 +146,9 @@ class EditPriceView extends StatelessWidget {
                     CustomDivider(),
                     Obx(
                       () => CustomLabeledSwitch(
-                        value: controller.prices[priceIndex].hideTicket,
+                        value: controller.temporaryPrice.value!.hideTicket,
                         onChanged: (value) {
-                          controller.handleHideTicket(priceIndex, value);
+                          controller.editHideTicket(value);
                         },
                         label: 'hide_ticket_type',
                       ),
@@ -163,12 +162,12 @@ class EditPriceView extends StatelessWidget {
                           child: Obx(
                             () => SettingsNumberInput(
                               onDecrement: () {
-                                controller.changePriority(priceIndex, -1);
+                                controller.changePriority(-1);
                               },
                               onIncrement: () {
-                                controller.changePriority(priceIndex, 1);
+                                controller.changePriority(1);
                               },
-                              value: controller.prices[priceIndex].priority,
+                              value: controller.temporaryPrice.value!.priority,
                             ),
                           ),
                         ),
@@ -182,7 +181,11 @@ class EditPriceView extends StatelessWidget {
                   fixedSize: WidgetStateProperty.fromMap({WidgetState.any: Size(200, 40)}),
                 ),
                 onPressed: () {
-                  Get.toNamed('/mvc/edit-prices');
+                  if (Get.currentRoute.contains('/new')) {
+                    controller.saveNewPrice();
+                  } else {
+                    controller.saveEditedPrice();
+                  }
                 },
                 child: Text('save'.tr),
               ),
@@ -190,16 +193,17 @@ class EditPriceView extends StatelessWidget {
                 style: ButtonStyle(
                   fixedSize: WidgetStateProperty.fromMap({WidgetState.any: Size(200, 40)}),
                 ),
-                onPressed: () {},
+                onPressed: () => controller.canselSave(),
                 child: Text('cancel'.tr),
               ),
-              OutlinedButton(
-                style: ButtonStyle(
-                  fixedSize: WidgetStateProperty.fromMap({WidgetState.any: Size(200, 40)}),
+              if (!isNew)
+                OutlinedButton(
+                  style: ButtonStyle(
+                    fixedSize: WidgetStateProperty.fromMap({WidgetState.any: Size(200, 40)}),
+                  ),
+                  onPressed: () => controller.deletePrice(),
+                  child: Text('delete_price'.tr),
                 ),
-                onPressed: () {},
-                child: Text('delete_price'.tr),
-              ),
             ],
           ),
         ),

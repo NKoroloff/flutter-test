@@ -35,4 +35,21 @@ class AsePrice extends Price {
          onTap: onTap,
          priority: priority,
        );
+
+  @override
+  clone() {
+    return AsePrice(
+      customPrice: customPrice.clone(),
+      priceColor: priceColor,
+      quantity: quantity,
+      id: id,
+      price: price,
+      name: name,
+      variant: variant,
+      disabled: disabled,
+      hideTicket: hideTicket,
+      onTap: onTap,
+      priority: priority,
+    );
+  }
 }

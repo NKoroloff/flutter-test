@@ -7,6 +7,7 @@ abstract class Routes {
   static const settings = _Paths.settings;
   static const editPrices = _Paths.editPrices;
   static const editPrice = _Paths.editPrice;
+  static const editPriceNew = _Paths.editPriceNew;
   static const selectSeats = _Paths.selectSeats;
   static const cardInput = _Paths.cardInput;
 }
@@ -16,6 +17,7 @@ abstract class _Paths {
   static const cashDrawer = '/mvc/cash-drawer';
   static const settings = '/mvc/settings';
   static const editPrice = '/mvc/edit-prices/:index';
+  static const editPriceNew = '/mvc/edit-prices/new';
   static const editPrices = '/mvc/edit-prices';
   static const selectSeats = '/mvc/select-seats';
   static const cardInput = '/mvc/card-input';
