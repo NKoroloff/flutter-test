@@ -13,7 +13,7 @@ class EditPriceView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var controller = Get.find<PriceController>();
-    bool isNew = Get.currentRoute.contains('/new');
+    var isNew = Get.currentRoute.contains('/new');
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.grey[200],
