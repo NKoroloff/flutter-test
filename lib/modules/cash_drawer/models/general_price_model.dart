@@ -30,21 +30,33 @@ class GeneralPrice extends Price {
          priority: priority,
          hideTicket: hideTicket,
        );
-
   @override
-  GeneralPrice clone() {
+  GeneralPrice copyWith({
+    PriceButtonVariant? variant,
+    PriceColor? priceColor,
+    PriceType? type,
+    bool? disabled,
+    int? quantity,
+    double? price,
+    String? name,
+    int? id,
+    VoidCallback? onTap,
+    CustomPrice? customPrice,
+    bool? hideTicket,
+    int? priority,
+  }) {
     return GeneralPrice(
-      customPrice: customPrice.clone(),
-      quantity: quantity,
-      priceColor: priceColor,
-      id: id,
-      name: name,
-      variant: variant,
-      disabled: disabled,
-      onTap: onTap,
-      price: price,
-      priority: priority,
-      hideTicket: hideTicket,
+      customPrice: customPrice ?? this.customPrice,
+      quantity: quantity ?? this.quantity,
+      priceColor: priceColor ?? this.priceColor,
+      id: id ?? this.id,
+      name: name ?? this.name,
+      variant: variant ?? this.variant,
+      disabled: disabled ?? this.disabled,
+      onTap: onTap ?? this.onTap,
+      price: price ?? this.price,
+      priority: priority ?? this.priority,
+      hideTicket: hideTicket ?? this.hideTicket,
     );
   }
 }

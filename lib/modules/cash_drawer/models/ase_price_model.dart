@@ -37,19 +37,32 @@ class AsePrice extends Price {
        );
 
   @override
-  clone() {
+  AsePrice copyWith({
+    PriceButtonVariant? variant,
+    PriceColor? priceColor,
+    PriceType? type,
+    bool? disabled,
+    int? quantity,
+    double? price,
+    String? name,
+    int? id,
+    VoidCallback? onTap,
+    CustomPrice? customPrice,
+    bool? hideTicket,
+    int? priority,
+  }) {
     return AsePrice(
-      customPrice: customPrice.clone(),
-      priceColor: priceColor,
-      quantity: quantity,
-      id: id,
-      price: price,
-      name: name,
-      variant: variant,
-      disabled: disabled,
-      hideTicket: hideTicket,
-      onTap: onTap,
-      priority: priority,
+      customPrice: customPrice ?? this.customPrice,
+      quantity: quantity ?? this.quantity,
+      priceColor: priceColor ?? this.priceColor,
+      id: id ?? this.id,
+      name: name ?? this.name,
+      variant: variant ?? this.variant,
+      disabled: disabled ?? this.disabled,
+      onTap: onTap ?? this.onTap,
+      price: price ?? this.price,
+      priority: priority ?? this.priority,
+      hideTicket: hideTicket ?? this.hideTicket,
     );
   }
 }

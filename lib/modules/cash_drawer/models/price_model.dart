@@ -38,5 +38,18 @@ abstract class Price {
   @override
   String toString() => 'Price(quantity: $quantity, id: $id, name: $name)';
 
-  Price clone();
+  Price copyWith({
+    PriceButtonVariant? variant,
+    PriceColor? priceColor,
+    PriceType? type,
+    bool? disabled,
+    int? quantity,
+    double? price,
+    String? name,
+    int? id,
+    VoidCallback? onTap,
+    CustomPrice? customPrice,
+    bool? hideTicket,
+    int? priority,
+  });
 }

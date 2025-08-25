@@ -83,7 +83,7 @@ class PriceController extends GetxController {
   }
 
   void startEditPrice(int index) {
-    temporaryPrice.value = prices[index].clone();
+    temporaryPrice.value = prices[index].copyWith();
     editingPriceIndex = index;
     Get.toNamed('/mvc/edit-prices/$index');
   }
